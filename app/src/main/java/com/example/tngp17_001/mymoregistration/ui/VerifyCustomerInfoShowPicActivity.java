@@ -64,7 +64,8 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TermsAndConditionsActivity.class);
+                startActivity(i);
             }
         });
     }

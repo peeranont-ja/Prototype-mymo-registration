@@ -43,6 +43,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"/>
 
+    <Button
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="151dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/circle_btn"/>
+
 
     <!--<ImageView-->
         <!--android:id="@+id/imageView1"-->

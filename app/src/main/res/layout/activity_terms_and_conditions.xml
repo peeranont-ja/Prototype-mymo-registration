@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tngp17_001.mymoregistration.ui.TermsAndConditionsActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_31" />
+
+    <ScrollView
+        android:layout_marginTop="120dp"
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="736dp"
+        android:layout_height="392dp"
+        android:layout_centerHorizontal="true"
+        android:fillViewport="true"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:background="@drawable/border"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/terms_and_conditions_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="30dp"
+                android:paddingTop="10dp"
+                android:textSize="19dp"
+                android:text="" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="63dp"
+        android:background="@android:color/white" />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="63dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_back_arrow" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="536dp">
+
+        <com.github.gcacace.signaturepad.views.SignaturePad
+            android:id="@+id/signature_pad"
+            android:layout_width="685dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/round_corner_rec_btn"
+            android:padding="5dp"
+            app:penColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/sign_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/signature_hint"
+            android:textColor="#707070"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/undo_signature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text=""
+            android:layout_marginRight="55dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="22dp"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/signature_pad_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="122dp"
+        android:gravity="center"
+        android:text="@string/accept_terms_ans_conditions_description"
+        android:textColor="#707070"
+        android:textSize="24dp"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btn_accept_bg"
+        android:layout_width="334dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="39dp"
+        android:background="@drawable/border"
+        android:text="@string/accept_button"
+        android:textColor="#707070"
+        android:textSize="24dp"
+        android:visibility="visible"/>
+
+    <Button
+        android:id="@+id/btn_accept"
+        android:layout_width="334dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="39dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="@string/accept_button"
+        android:textColor="#707070"
+        android:textSize="24dp"
+        android:visibility="invisible"/>
+
+
+</RelativeLayout>

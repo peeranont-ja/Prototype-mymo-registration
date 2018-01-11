@@ -3,6 +3,8 @@
     package="com.example.tngp17_001.mymoregistration">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +22,8 @@
         </activity>
         <activity android:name=".ui.IdQueryActivity" />
         <activity android:name=".ui.VerifyCustomerInfoActivity" />
-        <activity android:name=".ui.VerifyCustomerInfoShowPicActivity"></activity>
+        <activity android:name=".ui.VerifyCustomerInfoShowPicActivity" />
+        <activity android:name=".ui.TermsAndConditionsActivity"></activity>
     </application>
 
 </manifest>
