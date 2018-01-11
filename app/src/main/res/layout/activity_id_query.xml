@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tngp17_001.mymoregistration.ui.IdQueryActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_15" />
+
+
+    <View
+        android:layout_width="768dp"
+        android:layout_height="330dp"
+        android:background="#FAFAFA"
+        android:layout_alignParentBottom="true"/>
+
+    <View
+        android:layout_width="478dp"
+        android:layout_height="56dp"
+        android:background="@drawable/border"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="211dp"
+        />
+    
+    <EditText
+        android:id="@+id/citizen_input"
+        android:layout_width="478dp"
+        android:layout_height="56dp"
+        android:background="@android:color/transparent"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="227dp"
+        android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        android:maxLength="13"
+        />
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="93dp"
+        android:layout_height="56dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginTop="211dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_alignParentRight="true"/>
+
+    <View
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="63dp"
+        android:background="@android:color/white"
+        />
+    
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_back_arrow"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="63dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        />
+
+</RelativeLayout>
