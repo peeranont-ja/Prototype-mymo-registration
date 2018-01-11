@@ -30,9 +30,6 @@
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         />
-
-
-
     <Button
         android:id="@+id/btn_camera"
         android:layout_width="110dp"
@@ -45,14 +42,14 @@
 
 
     <!--<ImageView-->
-        <!--android:id="@+id/imageView1"-->
-        <!--android:layout_width="502.15dp"-->
-        <!--android:layout_height="376.62dp"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:layout_marginLeft="90dp"-->
-        <!--android:layout_marginTop="538dp"-->
-        <!--android:background="@drawable/border"-->
-        <!--&gt;-->
+    <!--android:id="@+id/imageView1"-->
+    <!--android:layout_width="502.15dp"-->
+    <!--android:layout_height="376.62dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:layout_marginLeft="90dp"-->
+    <!--android:layout_marginTop="538dp"-->
+    <!--android:background="@drawable/border"-->
+    <!--&gt;-->
     <!--</ImageView>-->
 
     <ImageView
