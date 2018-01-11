@@ -79,7 +79,6 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         cameraBtn = findViewById(R.id.btn_camera);
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +93,6 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     }
 
 
-
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -106,7 +104,6 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
         return image;
@@ -131,8 +128,6 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
                 Uri photoURI = FileProvider.getUriForFile(VerifyCustomerInfoActivity.this,
                         BuildConfig.APPLICATION_ID + ".provider",
                         createImageFile());
-
-
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
@@ -149,28 +144,6 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
             tempDir.mkdirs();
         }
         return File.createTempFile(part, ext, tempDir);
-    }
-
-
-    public void grabImage(ImageView imageView)
-    {
-        this.getContentResolver().notifyChange(mImageUri, null);
-        ContentResolver cr = this.getContentResolver();
-        Bitmap bitmap;
-//        try
-//        {
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(cr, mImageUri);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //imageView.setImageBitmap(bitmap);
-//        }
-//        catch (Exception e)
-//        {
-//            Toast.makeText(this, "Failed to load", Toast.LENGTH_SHORT).show();
-//            Log.d("error", "Failed to load", e);
-//        }
     }
 
     @Override
