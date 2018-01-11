@@ -66,7 +66,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if (checkSelfPermission(Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA},
+            requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     MY_CAMERA_REQUEST_CODE);
         }
 
@@ -91,37 +91,6 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        cameraBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-////                startActivityForResult(intent, 0);
-//                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-//                String imageFileName = timeStamp + ".jpg";
-//                File storageDir = Environment.getExternalStoragePublicDirectory(
-//                        Environment.DIRECTORY_PICTURES);
-//                pictureImagePath = storageDir.getAbsolutePath() + "/" + imageFileName;
-//                File file = new File(pictureImagePath);
-//
-//
-//
-//                if (Build.VERSION.SDK_INT > 21) { //use this if Lollipop_Mr1 (API 22) or above
-////                    mImageUri= FileProvider.getUriForFile(getApplicationContext(), getPackageName()+".fileprovider", file);
-//                    mImageUri =  FileProvider.getUriForFile(VerifyCustomerInfoActivity.this,
-//                            BuildConfig.APPLICATION_ID + ".provider",
-//                            file);
-//                } else {
-//                    mImageUri=  Uri.fromFile(file);
-//                }
-//
-//
-//                Log.d("test","After open camerea");
-//                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
-//                startActivityForResult(cameraIntent, CAMERA_REQUEST);
-//            }
-//        });
     }
 
 
@@ -250,22 +219,5 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
 
         }
     }
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-//            Bitmap photo = (Bitmap) data.getExtras().get("data");
-//            imageView.setImageBitmap(photo);
-//        }
-//        super.onActivityResult(requestCode, resultCode, data);
-//        switch(requestCode){
-//            case CAMERA_REQUEST:
-//                if(resultCode==RESULT_OK){
-//
-//
-//                    grabImage(imageView);
-//
-//                    //  Intent i = new Intent(VerifyCustomerInfoActivity.this, VerifyCustomerInfoShowPicActivity.class);
-//                    //startActivity(i);
-//                }
-//        }
-//    }
+
 }
