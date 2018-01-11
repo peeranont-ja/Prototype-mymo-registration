@@ -39,7 +39,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
     private TextView undoSignature;
     private TextView signDescription;
     private Button mSaveButton;
-    private Button mSaveButtonBg;
+    private View mSaveButtonBg;
     private TextView termsAndConditions;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};

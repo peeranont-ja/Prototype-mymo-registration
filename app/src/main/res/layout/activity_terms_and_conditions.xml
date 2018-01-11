@@ -34,7 +34,6 @@
                 android:id="@+id/terms_and_conditions_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="10dp"
                 android:paddingLeft="40dp"
                 android:paddingRight="30dp"
                 android:paddingTop="10dp"
@@ -113,17 +112,13 @@
         android:textSize="24dp"
         android:visibility="invisible"/>
 
-    <Button
+    <View
         android:id="@+id/btn_accept_bg"
         android:layout_width="334dp"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="39dp"
-        android:background="@drawable/border"
-        android:text="@string/accept_button"
-        android:textColor="#707070"
-        android:textSize="24dp"
         android:visibility="visible"/>
 
     <Button
@@ -133,7 +128,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="39dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:background="@drawable/border"
         android:text="@string/accept_button"
         android:textColor="#707070"
         android:textSize="24dp"
