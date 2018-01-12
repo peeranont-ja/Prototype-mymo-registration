@@ -37,7 +37,7 @@
                 android:paddingRight="30dp"
                 android:paddingTop="10dp"
                 android:text=""
-                android:textSize="19dp" />
+                android:textSize="18dp" />
 
         </LinearLayout>
     </ScrollView>
@@ -71,7 +71,6 @@
             android:layout_height="300dp"
             android:layout_centerInParent="true"
             android:background="@drawable/round_corner_rec_btn"
-            android:padding="5dp"
             app:penColor="@android:color/black" />
 
         <TextView
@@ -113,8 +112,8 @@
 
     <View
         android:id="@+id/btn_accept_bg"
-        android:layout_width="334dp"
-        android:layout_height="56dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="39dp"
@@ -123,10 +122,10 @@
     <Button
         android:id="@+id/btn_accept"
         android:layout_width="334dp"
-        android:layout_height="64dp"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="39dp"
+        android:layout_marginBottom="34dp"
         android:background="@drawable/border"
         android:text="@string/accept_button"
         android:textColor="#707070"
