@@ -73,8 +73,6 @@
         <!--&gt;-->
     <!--</ImageView>-->
 
-
-
     <Button
         android:id="@+id/btn_next"
         android:layout_width="334dp"

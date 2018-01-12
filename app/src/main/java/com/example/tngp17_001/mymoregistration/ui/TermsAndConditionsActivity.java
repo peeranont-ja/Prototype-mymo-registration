@@ -129,6 +129,9 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(TermsAndConditionsActivity.this, "Unable to store the SVG signature", Toast.LENGTH_SHORT).show();
                 }
+
+                Intent i = new Intent(TermsAndConditionsActivity.this, TakePhotoWithCardActivity.class);
+                startActivity(i);
             }
         });
 
