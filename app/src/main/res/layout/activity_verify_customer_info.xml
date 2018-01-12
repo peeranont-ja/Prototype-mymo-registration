@@ -55,7 +55,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:layout_marginLeft="82.85dp"
-        android:layout_marginTop="538dp"
+        android:layout_marginTop="525dp"
         android:src="@drawable/ic_id_card_white_128"
         android:background="@drawable/round_corner_rec_btn_transparent"
         >
@@ -76,7 +76,7 @@
     <Button
         android:id="@+id/btn_next"
         android:layout_width="334dp"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="30dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"

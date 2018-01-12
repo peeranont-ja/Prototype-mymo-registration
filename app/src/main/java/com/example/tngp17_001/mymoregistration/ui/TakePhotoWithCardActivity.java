@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tngp17_001.mymoregistration.R;
@@ -28,6 +29,8 @@ public class TakePhotoWithCardActivity extends AppCompatActivity {
 
     ImageButton backBtn;
     ImageButton cameraBtn;
+    Button nextBtn;
+    TextView description;
     private static final int MY_CAMERA_REQUEST_CODE = 0;
     public static final int REQUEST_CAMERA = 2;
     ImageView imageView;
@@ -55,8 +58,10 @@ public class TakePhotoWithCardActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         backBtn = findViewById(R.id.btn_back);
+        nextBtn = findViewById(R.id.btn_next);
         cameraBtn = findViewById(R.id.btn_camera);
         imageView = findViewById(R.id.imageView1);
+        description = findViewById(R.id.signature_pad_description);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +83,13 @@ public class TakePhotoWithCardActivity extends AppCompatActivity {
                         , "Take a picture with"), REQUEST_CAMERA);
             }
         });
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(TakePhotoWithCardActivity.this, SummaryActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -87,6 +99,9 @@ public class TakePhotoWithCardActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(cr, uri);
                 imageView.setImageBitmap(bitmap);
+                nextBtn.setVisibility(View.VISIBLE);
+                description.setVisibility(View.INVISIBLE);
+
 //                Toast.makeText(getApplicationContext()
 //                        , uri.getPath(), Toast.LENGTH_SHORT).show();
 //                nextBtn.setVisibility(View.VISIBLE);
