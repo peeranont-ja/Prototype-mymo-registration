@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="กรอกรหัสพนักงาน"
+        android:textSize="24dp"
+        android:textColor="#2B2B2B"
+        android:textAlignment="center"
+        android:gravity="center"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#707070"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="กรุณาใส่รหัสพนักงานเพื่อยืนยัน"
+        android:textSize="24dp"
+        android:textColor="#676767"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="27dp"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="336dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"
+        android:textSize="30dp"
+        android:backgroundTint="#707070"
+        android:gravity="center"
+        android:textColor="#070707"
+        />
+    <Button
+        android:layout_width="334dp"
+        android:layout_height="56dp"
+        android:text="ยืนยัน"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textSize="24dp"
+        android:textColor="#676767"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/border"/>
+
+</LinearLayout>

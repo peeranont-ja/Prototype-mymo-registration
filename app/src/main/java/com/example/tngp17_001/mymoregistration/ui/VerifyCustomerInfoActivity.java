@@ -98,8 +98,8 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(cr, uri);
                 imageView.setImageBitmap(bitmap);
-                Toast.makeText(getApplicationContext()
-                        , uri.getPath(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext()
+//                        , uri.getPath(), Toast.LENGTH_SHORT).show();
                 nextBtn.setVisibility(View.VISIBLE);
             } catch (Exception e) {
                 e.printStackTrace();

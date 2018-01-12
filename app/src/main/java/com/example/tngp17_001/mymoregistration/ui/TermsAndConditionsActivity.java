@@ -120,14 +120,14 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Bitmap signatureBitmap = mSignaturePad.getTransparentSignatureBitmap();
                 if (addPngSignatureToGallery(signatureBitmap)) {
-                    Toast.makeText(TermsAndConditionsActivity.this, "Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(TermsAndConditionsActivity.this, "Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(TermsAndConditionsActivity.this, "Unable to store the signature", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(TermsAndConditionsActivity.this, "Unable to store the signature", Toast.LENGTH_SHORT).show();
                 }
                 if (addSvgSignatureToGallery(mSignaturePad.getSignatureSvg())) {
-                    Toast.makeText(TermsAndConditionsActivity.this, "SVG Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(TermsAndConditionsActivity.this, "SVG Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(TermsAndConditionsActivity.this, "Unable to store the SVG signature", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(TermsAndConditionsActivity.this, "Unable to store the SVG signature", Toast.LENGTH_SHORT).show();
                 }
 
                 Intent i = new Intent(TermsAndConditionsActivity.this, TakePhotoWithCardActivity.class);

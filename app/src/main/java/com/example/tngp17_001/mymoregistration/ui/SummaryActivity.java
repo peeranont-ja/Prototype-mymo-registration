@@ -1,13 +1,19 @@
 package com.example.tngp17_001.mymoregistration.ui;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.tngp17_001.mymoregistration.R;
 
@@ -18,14 +24,6 @@ public class SummaryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        final MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
-                .title("ต้องการทำรายการต่อ?")
-                .content("กรุณากรอกรหัสผ่านเพื่อใช้งานต่อ")
-                .positiveText("เข้าสู่ระบบ")
-                .negativeText("ยกเลิก")
-                .cancelable(false)
-                .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
@@ -55,13 +53,38 @@ public class SummaryActivity extends AppCompatActivity {
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                MaterialDialog dialog = builder.build();
-//                dialog.show();
-                MaterialDialog dialog = new MaterialDialog.Builder(SummaryActivity.this)
-                        .title("Title")
-                        .content("content")
-                        .positiveText("agree")
-                        .show();
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(SummaryActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+
+                View view = inflater.inflate(R.layout.dialog_staff_confirm, null);
+                builder.setView(view);
+
+                builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Check username password
+//                        if (username.getText().equals("demo@example.com") &&
+//                                password.getText().equals("demo")) {
+//                            Toast.makeText(getApplicationContext(), "Login success!",
+//                                    Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "Login Failed!",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+                    }
+                });
+//                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+
+                builder.create();
+
+                builder.show();
+
             }
         });
 
