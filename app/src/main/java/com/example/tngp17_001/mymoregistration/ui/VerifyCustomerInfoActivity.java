@@ -1,21 +1,23 @@
 package com.example.tngp17_001.mymoregistration.ui;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -23,20 +25,25 @@ import android.widget.Toast;
 import com.example.tngp17_001.mymoregistration.R;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class VerifyCustomerInfoActivity extends AppCompatActivity {
 
     ImageButton backBtn;
+    ImageView bg_query;
+    Button btn_search;
+    View bg_text;
+    EditText citizen_input;
     Button cameraBtn;
     Button nextBtn;
+    Button queryBtn;
     private static final int MY_CAMERA_REQUEST_CODE = 0;
     public static final int REQUEST_CAMERA = 2;
     ImageView imageView;
     Uri uri;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         permissionCheck();
@@ -56,9 +63,15 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
+        bg_query = findViewById(R.id.bg_query);
+        btn_search = findViewById(R.id.btn_search);
+        bg_text = findViewById(R.id.bg_text);
+        citizen_input = findViewById(R.id.citizen_input);
         imageView = findViewById(R.id.imageView1);
         backBtn = findViewById(R.id.btn_back);
         nextBtn = findViewById(R.id.btn_next);
+        queryBtn = findViewById(R.id.btn_query);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +84,38 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        queryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bg_query.setVisibility(View.VISIBLE);
+                btn_search.setVisibility(View.VISIBLE);
+                bg_text.setVisibility(View.VISIBLE);
+                citizen_input.setVisibility(View.VISIBLE);
+                citizen_input.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(citizen_input, InputMethodManager.SHOW_IMPLICIT);
+            }
+        });
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bg_query.setVisibility(View.GONE);
+                btn_search.setVisibility(View.GONE);
+                bg_text.setVisibility(View.GONE);
+                citizen_input.setVisibility(View.GONE);
+                hideKeyboard(v);
+            }
+        });
+        bg_query.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bg_query.setVisibility(View.GONE);
+                btn_search.setVisibility(View.GONE);
+                bg_text.setVisibility(View.GONE);
+                citizen_input.setVisibility(View.GONE);
+                hideKeyboard(v);
             }
         });
         cameraBtn = findViewById(R.id.btn_camera);
@@ -134,6 +179,11 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
             }
 
         }
+    }
+    protected void hideKeyboard(View view)
+    {
+        InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 }
