@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.mymoregistration2ndedition.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_15" />
 
-</android.support.constraint.ConstraintLayout>
+
+    <View
+        android:layout_width="768dp"
+        android:layout_height="330dp"
+        android:background="#FAFAFA"
+        android:layout_alignParentBottom="true"/>
+
+    <View
+        android:layout_width="478dp"
+        android:layout_height="56dp"
+        android:background="@drawable/border"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="211dp"
+        />
+
+    <EditText
+        android:id="@+id/citizen_input"
+        android:layout_width="478dp"
+        android:layout_height="56dp"
+        android:background="@drawable/edittext_transaparent_bg_border"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="211dp"
+        android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="13"
+        android:textColor="#707070"
+        />
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="93dp"
+        android:layout_height="56dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginTop="211dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_alignParentRight="true"/>
+
+    <View
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="63dp"
+        android:background="@android:color/white"
+        />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_back_arrow"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="63dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        />
+
+</RelativeLayout>
