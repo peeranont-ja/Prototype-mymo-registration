@@ -12,6 +12,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/background_17" />
 
+
     <View
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -41,6 +42,7 @@
         android:layout_alignParentBottom="true"/>
 
     <Button
+        android:id="@+id/btn_query"
         android:layout_alignParentRight="true"
         android:layout_marginRight="44dp"
         android:layout_marginTop="151dp"
@@ -85,6 +87,56 @@
         android:textColor="#707070"
         android:text="ถัดไป"
         android:visibility="invisible"
+        />
+
+    <ImageView
+        android:animateLayoutChanges="true"
+        android:id="@+id/bg_query"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_18"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:animateLayoutChanges="true"
+        android:id="@+id/btn_search"
+        android:layout_width="65dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="211dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_alignParentLeft="true"
+        android:visibility="gone"
+
+        />
+
+    <View
+        android:animateLayoutChanges="true"
+        android:id="@+id/bg_text"
+        android:layout_width="478dp"
+        android:layout_height="56dp"
+        android:background="@drawable/border"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="211dp"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:animateLayoutChanges="true"
+        android:id="@+id/citizen_input"
+        android:layout_width="478dp"
+        android:layout_height="56dp"
+        android:background="@android:color/transparent"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="227dp"
+        android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        android:maxLength="13"
+        android:visibility="gone"
         />
 
 
