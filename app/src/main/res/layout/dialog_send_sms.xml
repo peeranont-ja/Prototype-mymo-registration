@@ -39,7 +39,8 @@
         android:gravity="center"
         android:inputType="number"
         android:textColor="#070707"
-        android:textSize="24dp" />
+        android:textSize="24dp"
+        android:maxLength="10"/>
 
     <Button
         android:id="@+id/btn_send_sms"
