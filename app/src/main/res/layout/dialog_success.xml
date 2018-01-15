@@ -9,10 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
-        android:text="สมัคร MyMo เรียบร้อยแล้ว"
+        android:text="@string/register_mymo_successful"
         android:textAlignment="center"
         android:textColor="#2B2B2B"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
 
     <TextView
@@ -22,10 +22,10 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginTop="27dp"
-        android:text="โปรดตรวจสอบว่ารหัสเปิดใช้งาน\nถูกส่งไปถึงผู้เปิดใช้บริการแล้ว"
+        android:text="@string/success_description"
         android:textAlignment="center"
         android:textColor="#676767"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -35,51 +35,31 @@
         android:layout_marginTop="55dp"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="144dp"
-                android:layout_height="138dp"
-                android:background="@drawable/border"
-                android:gravity="center"
-                android:text="สมัคร\nMyMoใหม่"
-                android:textColor="#707070"
-                android:textSize="18dp" />
+        <Button
+            android:id="@+id/btn_register_mymo"
+            android:layout_width="144dp"
+            android:layout_height="138dp"
+            android:background="@drawable/btn_round_transparent"
+            android:text="สมัคร\nMyMoใหม่"
+            android:textColor="#707070"
+            android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btn_register_mymo"
-                android:layout_width="144dp"
-                android:layout_height="138dp"
-                android:background="?android:attr/selectableItemBackground" />
-
-        </RelativeLayout>
 
         <View
             android:layout_width="33dp"
             android:layout_height="138dp" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="144dp"
-                android:layout_height="138dp"
-                android:background="@drawable/border"
-                android:gravity="center"
-                android:text="กลับสู่\nเมนูหลัก"
-                android:textColor="#707070"
-                android:textSize="18dp" />
+        <Button
+            android:id="@+id/btn_main_menu"
+            android:layout_width="144dp"
+            android:layout_height="138dp"
+            android:background="@drawable/btn_round_transparent"
+            android:text="กลับสู่\nเมนูหลัก"
+            android:textColor="#707070"
+            android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btn_main_menu"
-                android:layout_width="144dp"
-                android:layout_height="138dp"
-                android:background="?android:attr/selectableItemBackground" />
-
-        </RelativeLayout>
 
     </LinearLayout>
 

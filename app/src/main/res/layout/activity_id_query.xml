@@ -31,14 +31,15 @@
         android:id="@+id/citizen_input"
         android:layout_width="478dp"
         android:layout_height="56dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/edittext_transaparent_bg_border"
         android:layout_marginLeft="99dp"
-        android:layout_marginTop="227dp"
+        android:layout_marginTop="211dp"
         android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"
         android:ellipsize="start"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:inputType="number"
         android:maxLength="13"
+        android:textColor="#707070"
         />
 
     <Button

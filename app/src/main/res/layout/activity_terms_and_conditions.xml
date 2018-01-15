@@ -37,7 +37,8 @@
                 android:paddingRight="30dp"
                 android:paddingTop="10dp"
                 android:text=""
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textColor="#707070"/>
 
         </LinearLayout>
     </ScrollView>
@@ -70,7 +71,7 @@
             android:layout_width="685dp"
             android:layout_height="300dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/round_corner_rec_btn"
+            android:background="@drawable/signature_pad_round_border_white"
             app:penColor="@android:color/black" />
 
         <TextView
@@ -80,17 +81,18 @@
             android:layout_centerInParent="true"
             android:text="@string/signature_hint"
             android:textColor="#707070"
-            android:textSize="30dp" />
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/undo_signature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="55dp"
-            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
             android:text=""
-            android:textColor="@android:color/darker_gray"
+            android:textColor="#707070"
             android:textSize="22dp"
             android:visibility="invisible" />
 
@@ -126,7 +128,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp"
-        android:background="@drawable/border"
+        android:background="@drawable/btn_round_transparent"
         android:text="@string/accept_button"
         android:textColor="#707070"
         android:textSize="24dp"

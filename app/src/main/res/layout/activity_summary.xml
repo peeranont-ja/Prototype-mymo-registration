@@ -36,7 +36,10 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp"
-        android:background="?android:attr/selectableItemBackground" />
+        android:background="@drawable/btn_round_transparent"
+        android:text="เปิดใช้บริการ"
+        android:textColor="#707070"
+        android:textSize="24dp"/>
 
 
 </RelativeLayout>
