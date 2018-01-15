@@ -9,12 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
-        android:text="กรอกรหัสพนักงาน"
+        android:text="ส่งรหัสเปิดใช้บริการให้ผู้สมัคร"
         android:textAlignment="center"
         android:textColor="#2B2B2B"
-        android:textSize="24dp"
-
-        />
+        android:textSize="24dp" />
 
     <View
         android:layout_width="match_parent"
@@ -26,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="27dp"
-        android:text="กรุณาใส่รหัสพนักงานเพื่อยืนยัน"
+        android:text="รหัสเปิดใช้บริการจะถูกส่งไปที่"
         android:textAlignment="center"
         android:textColor="#676767"
         android:textSize="24dp" />
@@ -39,8 +37,7 @@
         android:layout_marginTop="44dp"
         android:backgroundTint="#707070"
         android:gravity="center"
-        android:inputType="textPassword"
-        android:maxLength="10"
+        android:inputType="number"
         android:textColor="#070707"
         android:textSize="24dp" />
 
@@ -54,7 +51,7 @@
         android:layout_marginRight="89dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/border"
-        android:text="ยืนยัน"
+        android:text="ส่รหัส"
         android:textAlignment="center"
         android:textColor="#676767"
         android:textSize="24dp" />
