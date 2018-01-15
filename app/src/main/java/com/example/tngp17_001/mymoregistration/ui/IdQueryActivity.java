@@ -18,8 +18,6 @@ public class IdQueryActivity extends AppCompatActivity {
 
     ImageButton backBtn;
     Button searchBtn;
-    EditText citizenInput;
-    int textlength = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +45,6 @@ public class IdQueryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(IdQueryActivity.this, VerifyCustomerInfoActivity.class);
-
                 startActivity(i);
             }
         });
