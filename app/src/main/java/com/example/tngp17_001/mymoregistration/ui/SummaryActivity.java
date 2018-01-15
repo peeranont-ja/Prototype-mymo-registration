@@ -59,15 +59,19 @@ public class SummaryActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(SummaryActivity.this);
         dialog.setTitle("Password Dialog");
         dialog.setContentView(R.layout.dialog_staff_confirm);
+
         final Dialog dialogSMS = new Dialog(SummaryActivity.this);
         dialogSMS.setTitle("SMS Dialog");
         dialogSMS.setContentView(R.layout.dialog_send_sms);
+
         final Dialog dialogSuccess = new Dialog(SummaryActivity.this);
         dialogSuccess.setTitle("Success Dialog");
         dialogSuccess.setContentView(R.layout.dialog_success);
 
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
         Button sendSMSBtn = dialogSMS.findViewById(R.id.btn_send_sms);
+        Button backToMainMenuBtn = dialogSuccess.findViewById(R.id.btn_main_menu);
+        Button backToregisterMymo = dialogSuccess.findViewById(R.id.btn_register_mymo);
 
         finishBtn = findViewById(R.id.btn_finish);
         finishBtn.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +94,24 @@ public class SummaryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 dialogSMS.dismiss();
                 dialogSuccess.show();
+            }
+        });
+
+        backToMainMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SummaryActivity.this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+
+        backToregisterMymo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SummaryActivity.this, IdQueryActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
             }
         });
 
