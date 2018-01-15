@@ -62,8 +62,12 @@ public class SummaryActivity extends AppCompatActivity {
         final Dialog dialogSMS = new Dialog(SummaryActivity.this);
         dialogSMS.setTitle("SMS Dialog");
         dialogSMS.setContentView(R.layout.dialog_send_sms);
+        final Dialog dialogSuccess = new Dialog(SummaryActivity.this);
+        dialogSuccess.setTitle("Success Dialog");
+        dialogSuccess.setContentView(R.layout.dialog_success);
 
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
+        Button sendSMSBtn = dialogSMS.findViewById(R.id.btn_send_sms);
 
         finishBtn = findViewById(R.id.btn_finish);
         finishBtn.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +82,14 @@ public class SummaryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 dialog.dismiss();
                 dialogSMS.show();
+            }
+        });
+
+        sendSMSBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogSMS.dismiss();
+                dialogSuccess.show();
             }
         });
 

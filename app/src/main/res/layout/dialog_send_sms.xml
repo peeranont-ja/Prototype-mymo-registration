@@ -42,7 +42,7 @@
         android:textSize="24dp" />
 
     <Button
-        android:id="@+id/btn_send_password"
+        android:id="@+id/btn_send_sms"
         android:layout_width="334dp"
         android:layout_height="56dp"
         android:layout_gravity="center"
@@ -51,7 +51,7 @@
         android:layout_marginRight="89dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/border"
-        android:text="ส่รหัส"
+        android:text="ส่งรหัส"
         android:textAlignment="center"
         android:textColor="#676767"
         android:textSize="24dp" />
