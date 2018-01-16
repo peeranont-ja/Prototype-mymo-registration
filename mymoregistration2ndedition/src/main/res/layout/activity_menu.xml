@@ -17,9 +17,9 @@
         android:id="@+id/btn_register"
         android:layout_width="160dp"
         android:layout_height="152dp"
-        android:layout_marginRight="129dp"
+        android:layout_marginLeft="303dp"
         android:layout_marginTop="160dp"
         android:background="?android:attr/selectableItemBackground"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentLeft="true"/>
 
 </RelativeLayout>
