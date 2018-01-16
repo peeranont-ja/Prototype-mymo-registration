@@ -24,6 +24,8 @@
         <activity android:name=".ui.VerifyCustomerInfoActivity" />
         <activity android:name=".ui.VerifyCustomerInfoShowPicActivity" />
         <activity android:name=".ui.TermsAndConditionsActivity" />
+        <activity android:name=".ui.CameraActivity"
+                                android:screenOrientation="landscape"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

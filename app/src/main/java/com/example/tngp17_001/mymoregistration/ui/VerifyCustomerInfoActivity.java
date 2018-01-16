@@ -13,6 +13,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -25,8 +26,6 @@ import android.widget.Toast;
 import com.example.tngp17_001.mymoregistration.R;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class VerifyCustomerInfoActivity extends AppCompatActivity {
 
@@ -39,7 +38,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     Button nextBtn;
     Button queryBtn;
     private static final int MY_CAMERA_REQUEST_CODE = 0;
-    public static final int REQUEST_CAMERA = 2;
+    public static final int REQUEST_CAMERA = 1;
     ImageView imageView;
     Uri uri;
 
@@ -123,23 +122,29 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                String timeStamp =
-                        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                String imageFileName = "IMG_" + timeStamp + ".jpg";
-                File f = new File(Environment.getExternalStorageDirectory()
-                        , "DCIM/Camera/" + imageFileName);
+//                String timeStamp =
+//                        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//                String imageFileName = "IMG_" + timeStamp + ".jpg";
+                File f = new File(Environment.getExternalStorageDirectory().toString() + "/Android/data/" +
+                        getPackageName().toString() + "/files/", "pic.jpg");
+                Log.e("EIEI", "Fragoooo=" + f);
                 uri = Uri.fromFile(f);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                startActivityForResult(Intent.createChooser(intent
-                        , "Take a picture with"), REQUEST_CAMERA);
+                Intent i = new Intent(VerifyCustomerInfoActivity.this, CameraActivity.class);
+                startActivityForResult(i, 1);
+//                startActivityForResult(Intent.createChooser(intent
+//                        , "Take a picture32 with"), REQUEST_CAMERA);
             }
         });
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e("GNO", "requestCode=" + requestCode);
+        Log.e("GNO", "resultCode=" + resultCode);
+        Log.e("GNO", "data=" + data);
         if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
             getContentResolver().notifyChange(uri, null);
-            ContentResolver cr = getContentResolver();
+            ContentResolver cr =  getContentResolver();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(cr, uri);
                 imageView.setImageBitmap(bitmap);
@@ -147,6 +152,8 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
 //                        , uri.getPath(), Toast.LENGTH_SHORT).show();
                 nextBtn.setVisibility(View.VISIBLE);
             } catch (Exception e) {
+                Log.e("GNO", "ERROR=" + e);
+                Log.e("GNO", "URI=" + uri);
                 e.printStackTrace();
             }
         }
