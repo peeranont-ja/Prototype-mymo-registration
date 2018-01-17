@@ -84,8 +84,8 @@ public class TakePhotoActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(TakePhotoWithCardActivity.this, SummaryActivity.class);
-//                startActivity(i);
+                Intent i = new Intent(TakePhotoActivity.this, SummaryActivity.class);
+                startActivity(i);
             }
         });
     }

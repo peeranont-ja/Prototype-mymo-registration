@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:camerakit="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -50,16 +51,25 @@
         android:layout_marginTop="151dp"
         android:background="@drawable/circle_btn" />
 
-    <ImageView
-        android:id="@+id/imageView1"
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView1"-->
+        <!--android:layout_width="502.15dp"-->
+        <!--android:layout_height="376.62dp"-->
+        <!--android:layout_marginLeft="82.85dp"-->
+        <!--android:layout_marginTop="525dp"-->
+        <!--android:adjustViewBounds="true"-->
+        <!--android:background="@drawable/rec_round_gray_bg_border"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/ic_id_card_white_128" />-->
+
+    <com.wonderkiln.camerakit.CameraView
+        android:id="@+id/camera"
         android:layout_width="502.15dp"
         android:layout_height="376.62dp"
         android:layout_marginLeft="82.85dp"
         android:layout_marginTop="525dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/rec_round_gray_bg_border"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_id_card_white_128" />
+        android:adjustViewBounds="true" />
 
     <!--<ImageView-->
     <!--android:id="@+id/imageView1"-->
@@ -95,6 +105,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/background_18"
         android:visibility="gone" />
+
 
     <Button
         android:id="@+id/btn_search"

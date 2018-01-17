@@ -22,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.wonderkiln.camerakit.CameraView;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,6 +42,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     public static final int REQUEST_CAMERA = 2;
     ImageView imageView;
     Uri uri;
+    CameraView cameraView;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -132,6 +135,20 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
                         , "Take a picture with"), REQUEST_CAMERA);
             }
         });
+
+        cameraView = findViewById(R.id.camera);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cameraView.start();
+    }
+
+    @Override
+    protected void onPause() {
+        cameraView.stop();
+        super.onPause();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

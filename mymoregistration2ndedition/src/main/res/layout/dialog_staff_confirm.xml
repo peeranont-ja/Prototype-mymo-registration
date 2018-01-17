@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="กรอกรหัสพนักงาน"
+        android:textAlignment="center"
+        android:textColor="#2B2B2B"
+        android:textSize="24dp"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#707070" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="27dp"
+        android:text="กรุณาใส่รหัสพนักงานเพื่อยืนยัน"
+        android:textAlignment="center"
+        android:textColor="#676767"
+        android:textSize="24dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="336dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="#707070"
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:textColor="#070707"
+        android:textSize="24dp" />
+
+    <Button
+        android:id="@+id/btn_send_password"
+        android:layout_width="334dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="89dp"
+        android:layout_marginRight="89dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/btn_round_transparent"
+        android:text="ยืนยัน"
+        android:textAlignment="center"
+        android:textColor="#676767"
+        android:textSize="24dp" />
+
+</LinearLayout>

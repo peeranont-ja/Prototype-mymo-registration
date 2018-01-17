@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="@string/register_mymo_successful"
+        android:textAlignment="center"
+        android:textColor="#2B2B2B"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#707070" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="39dp"
+        android:text="@string/success_description"
+        android:textAlignment="center"
+        android:textColor="#676767"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_main_menu"
+        android:layout_width="334dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="89dp"
+        android:layout_marginRight="89dp"
+        android:layout_marginTop="59dp"
+        android:background="@drawable/btn_round_transparent"
+        android:text="@string/main_menu"
+        android:textAlignment="center"
+        android:textColor="#676767"
+        android:textSize="24sp" />
+
+</LinearLayout>

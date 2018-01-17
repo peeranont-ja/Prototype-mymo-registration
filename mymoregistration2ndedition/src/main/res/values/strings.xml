@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">MyMoRegistration"</string>
+    <string name="pre_accept_terms_ans_conditions_description">กรุณาเซ็นชื่อเพื่อยอมรับเงื่อนไขและข้อตกลง</string>
     <string name="accept_terms_ans_conditions_description">การกดปุ่มด้านล่างถือเป็นการยินยอมเงื่อนไขและข้อตกลง\nในการสมัครใช้บริการ MyMo</string>
     <string name="accept_button">ยอมรับเงื่อนไขและข้อตกลง</string>
     <string name="next_button">ถัดไป</string>
-    <string name="signature_hint">กรุณาเซ็นชื่อในช่องว่าง</string>
+    <string name="signature_hint">กรุณาเซ็นชื่อในช่องว่างเพื่อยอมรับเงื่อนไขและข้อตกลง</string>
     <string name="take_photo_description">กรุณาถ่ายรูปผู้สมัคร\nตามกรอบที่กำหนด</string>
     <string name="terms_and_conditions">
         <![CDATA[
@@ -11,6 +12,7 @@
         ]]>
     </string>
     <string name="register_mymo_successful">สมัคร MyMo เรียบร้อยแล้ว</string>
-    <string name="success_description">โปรดตรวจสอบว่ารหัสเปิดใช้งาน ถูกส่งไปถึงผู้เปิดใช้บริการแล้ว</string>
+    <string name="success_description">โปรดตรวจสอบว่ารหัสเปิดใช้งาน\nถูกส่งไปถึงผู้เปิดใช้บริการแล้ว</string>
     <string name="search_id_description">ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน</string>
+    <string name="main_menu">กลับสู่เมนูหลัก</string>
 </resources>
