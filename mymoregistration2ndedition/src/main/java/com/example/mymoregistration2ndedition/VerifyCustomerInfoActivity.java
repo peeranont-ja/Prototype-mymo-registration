@@ -22,7 +22,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.wonderkiln.camerakit.CameraView;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -42,7 +41,6 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     public static final int REQUEST_CAMERA = 2;
     ImageView imageView;
     Uri uri;
-    CameraView cameraView;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -123,33 +121,35 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                String timeStamp =
-                        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                String imageFileName = "IMG_" + timeStamp + ".jpg";
-                File f = new File(Environment.getExternalStorageDirectory()
-                        , "DCIM/Camera/" + imageFileName);
-                uri = Uri.fromFile(f);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                startActivityForResult(Intent.createChooser(intent
-                        , "Take a picture with"), REQUEST_CAMERA);
+//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                String timeStamp =
+//                        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//                String imageFileName = "IMG_" + timeStamp + ".jpg";
+//                File f = new File(Environment.getExternalStorageDirectory()
+//                        , "DCIM/Camera/" + imageFileName);
+//                uri = Uri.fromFile(f);
+//                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+//                startActivityForResult(Intent.createChooser(intent
+//                        , "Take a picture with"), REQUEST_CAMERA);
+                Intent i = new Intent(VerifyCustomerInfoActivity.this, TakePhotoIdCardActivity.class);
+                startActivity(i);
             }
         });
 
-        cameraView = findViewById(R.id.camera);
+//        cameraView = findViewById(R.id.camera);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        cameraView.start();
-    }
-
-    @Override
-    protected void onPause() {
-        cameraView.stop();
-        super.onPause();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        cameraView.start();
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        cameraView.stop();
+//        super.onPause();
+//    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {

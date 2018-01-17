@@ -2,13 +2,11 @@ package com.example.mymoregistration2ndedition;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,13 +16,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -199,7 +195,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
                 } else {
                 }
 
-                Intent i = new Intent(TermsAndConditionsActivity.this, TakePhotoActivity.class);
+                Intent i = new Intent(TermsAndConditionsActivity.this, TakePhotoPersonActivity.class);
                 startActivity(i);
             }
         });

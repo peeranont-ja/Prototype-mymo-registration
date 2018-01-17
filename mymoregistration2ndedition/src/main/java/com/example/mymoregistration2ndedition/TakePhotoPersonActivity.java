@@ -23,7 +23,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TakePhotoActivity extends AppCompatActivity {
+public class TakePhotoPersonActivity extends AppCompatActivity {
 
     ImageButton backBtn;
     ImageButton cameraBtn;
@@ -39,7 +39,7 @@ public class TakePhotoActivity extends AppCompatActivity {
         permissionCheck();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_take_photo);
+        setContentView(R.layout.activity_take_photo_person);
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -84,7 +84,7 @@ public class TakePhotoActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TakePhotoActivity.this, SummaryActivity.class);
+                Intent i = new Intent(TakePhotoPersonActivity.this, SummaryActivity.class);
                 startActivity(i);
             }
         });
