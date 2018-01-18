@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="27dp"
-        android:text="รหัสเปิดใช้บริการจะถูกส่งไปที่"
+        android:text="@string/sms_description"
         android:textAlignment="center"
         android:textColor="#676767"
         android:textSize="24dp" />

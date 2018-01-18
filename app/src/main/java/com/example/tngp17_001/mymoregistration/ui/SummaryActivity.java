@@ -76,8 +76,6 @@ public class SummaryActivity extends AppCompatActivity {
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
         Button sendSMSBtn = dialogSMS.findViewById(R.id.btn_send_sms);
         Button backToMainMenuBtn = dialogSuccess.findViewById(R.id.btn_main_menu);
-        Button backToregisterMymo = dialogSuccess.findViewById(R.id.btn_register_mymo);
-
         finishBtn = findViewById(R.id.btn_finish);
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,14 +109,7 @@ public class SummaryActivity extends AppCompatActivity {
             }
         });
 
-        backToregisterMymo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SummaryActivity.this, IdQueryActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-            }
-        });
+
 
     }
 }
