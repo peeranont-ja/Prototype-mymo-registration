@@ -27,13 +27,13 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
     private Camera camera;
 
     private FrameLayout cameraPreviewLayout;
-    Button cameraBtn;
+    ImageButton cameraBtn;
     ImageView imageView;
     Button nextBtn;
-    TextView registerTimestamp;
-
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    String currentDate = sdf.format(new Date());
+//    TextView registerTimestamp;
+//
+//    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//    String currentDate = sdf.format(new Date());
 
 
     @Override
@@ -77,8 +77,8 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
 
         cameraPreviewLayout = findViewById(R.id.camera_preview);
         imageView = findViewById(R.id.imageView1);
-        registerTimestamp = findViewById(R.id.register_timestamp);
-        registerTimestamp.setText(currentDate);
+//        registerTimestamp = findViewById(R.id.register_timestamp);
+//        registerTimestamp.setText(currentDate);
 
         camera = checkDeviceCamera();
         camera.setDisplayOrientation(90);

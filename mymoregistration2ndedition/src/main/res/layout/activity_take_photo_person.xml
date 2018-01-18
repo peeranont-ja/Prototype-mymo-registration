@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/background_75" />
+        android:src="@drawable/background_62" />
 
 
     <View
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="224dp">
+        android:layout_marginTop="120dp">
 
         <!--<com.otaliastudios.cameraview.CameraView-->
         <!--android:id="@+id/camera"-->
@@ -58,66 +58,83 @@
 
         <FrameLayout
             android:id="@+id/camera_preview"
-            android:layout_width="642dp"
-            android:layout_height="447dp"
+            android:layout_width="767dp"
+            android:layout_height="576dp"
             android:layout_centerInParent="true"
             android:keepScreenOn="true" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:alpha="0.8"
-                android:background="@null"
-                android:scaleType="centerInside"
-                android:src="@drawable/logo_gsb"
-                android:tint="#FFFFFF"/>
+        <ImageView
+            android:layout_marginTop="40dp"
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:alpha="0.8"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_camera_focus_transparent"
+            android:tint="#FFFFFF" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:alpha="0.8"
-                android:background="@android:color/white" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="5dp"
-                android:alpha="0.8"
-                android:text="ใช้สำหรับการสมัคร MyMo เท่านั้น"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:alpha="0.8"-->
+        <!--android:text="ใช้สำหรับการสมัคร MyMo เท่านั้น"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/register_timestamp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:alpha="0.8"
-                android:text="31/12/1995"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <!--<TextView-->
+        <!--android:id="@+id/register_timestamp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:alpha="0.8"-->
+        <!--android:text="31/12/1995"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="18sp"-->
+        <!--android:textStyle="bold" />-->
+
     </RelativeLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_camera"
         android:layout_width="132dp"
         android:layout_height="94dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="649dp"
+        android:background="@drawable/btn_round_left_right_transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_photo_camera" />
+
+    <View
+        android:id="@+id/signature_pad_description_bg"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="152dp"
-        android:background="?android:attr/selectableItemBackground" />
+        android:layout_marginBottom="140dp"
+        android:background="@android:color/white"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/take_id_card_photo_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="162dp"
+        android:gravity="center"
+        android:text="@string/take_photo_description"
+        android:textColor="#8D8D8D"
+        android:textSize="20sp"
+        android:visibility="visible" />
+
 
     <Button
         android:id="@+id/btn_next"
