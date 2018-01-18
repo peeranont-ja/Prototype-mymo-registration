@@ -1,45 +1,46 @@
 package com.example.mymoregistration2ndedition;
 
-import android.Manifest;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
-import android.net.Uri;
+import android.graphics.BitmapFactory;
+import android.hardware.Camera;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class TakePhotoPersonActivity extends AppCompatActivity {
 
     ImageButton backBtn;
-    ImageButton cameraBtn;
-    Button nextBtn;
-    TextView description;
-    private static final int MY_CAMERA_REQUEST_CODE = 0;
-    public static final int REQUEST_CAMERA = 2;
+    private ImageSurfaceView mImageSurfaceView;
+    private Camera camera;
+
+    private FrameLayout cameraPreviewLayout;
+    Button cameraBtn;
     ImageView imageView;
-    Uri uri;
+    Button nextBtn;
+    TextView registerTimestamp;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String currentDate = sdf.format(new Date());
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        permissionCheck();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_photo_person);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -56,87 +57,73 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         backBtn = findViewById(R.id.btn_back);
-        nextBtn = findViewById(R.id.btn_next);
-        cameraBtn = findViewById(R.id.btn_camera);
-        imageView = findViewById(R.id.imageView1);
-        description = findViewById(R.id.signature_pad_description);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        cameraBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                String timeStamp =
-                        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                String imageFileName = "IMG_" + timeStamp + ".jpg";
-                File f = new File(Environment.getExternalStorageDirectory()
-                        , "DCIM/Camera/" + imageFileName);
-                uri = Uri.fromFile(f);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                startActivityForResult(Intent.createChooser(intent
-                        , "Take a picture with"), REQUEST_CAMERA);
-            }
-        });
+
+
+        nextBtn = findViewById(R.id.btn_next);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TakePhotoPersonActivity.this, SummaryActivity.class);
+                Intent i = new Intent(TakePhotoPersonActivity.this,
+                        SummaryActivity.class);
                 startActivity(i);
             }
         });
-    }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
-            getContentResolver().notifyChange(uri, null);
-            ContentResolver cr = getContentResolver();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(cr, uri);
-                imageView.setImageBitmap(bitmap);
-                nextBtn.setVisibility(View.VISIBLE);
-                description.setVisibility(View.INVISIBLE);
+        cameraPreviewLayout = findViewById(R.id.camera_preview);
+        imageView = findViewById(R.id.imageView1);
+        registerTimestamp = findViewById(R.id.register_timestamp);
+        registerTimestamp.setText(currentDate);
 
-//                Toast.makeText(getApplicationContext()
-//                        , uri.getPath(), Toast.LENGTH_SHORT).show();
-//                nextBtn.setVisibility(View.VISIBLE);
-            } catch (Exception e) {
-                e.printStackTrace();
+        camera = checkDeviceCamera();
+        camera.setDisplayOrientation(90);
+        mImageSurfaceView = new ImageSurfaceView(TakePhotoPersonActivity.this, camera);
+        cameraPreviewLayout.addView(mImageSurfaceView);
+
+        cameraBtn = findViewById(R.id.btn_camera);
+        cameraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                camera.takePicture(null, null, pictureCallback);
             }
-        }
+        });
+
+
     }
 
-    public void permissionCheck() {
-        if (checkSelfPermission(Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    MY_CAMERA_REQUEST_CODE);
+    private Camera checkDeviceCamera() {
+        Camera mCamera = null;
+        try {
+            mCamera = Camera.open();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return mCamera;
     }
 
-    @Override
 
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == MY_CAMERA_REQUEST_CODE) {
-
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
-
-            } else {
-
-                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
-
+    Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+            if (bitmap == null) {
+                Toast.makeText(TakePhotoPersonActivity.this, "Captured image is empty", Toast.LENGTH_LONG).show();
+                return;
             }
-
+            imageView.setImageBitmap(scaleDownBitmapImage(bitmap, 642, 447));
+            nextBtn.setVisibility(View.VISIBLE);
         }
+    };
+
+    private Bitmap scaleDownBitmapImage(Bitmap bitmap, int newWidth, int newHeight) {
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
+        return resizedBitmap;
     }
+
 
 }
-
