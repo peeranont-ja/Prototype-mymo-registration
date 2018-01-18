@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.tngp17_001.mymoregistration.R;
@@ -38,6 +39,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     Button cameraBtn;
     Button nextBtn;
     Button queryBtn;
+    LinearLayout watermarkLayout;
     private static final int MY_CAMERA_REQUEST_CODE = 0;
     public static final int REQUEST_CAMERA = 2;
     ImageView imageView;
@@ -72,6 +74,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.btn_back);
         nextBtn = findViewById(R.id.btn_next);
         queryBtn = findViewById(R.id.btn_query);
+        watermarkLayout = findViewById(R.id.watermark_layout);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +149,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext()
 //                        , uri.getPath(), Toast.LENGTH_SHORT).show();
                 nextBtn.setVisibility(View.VISIBLE);
+                watermarkLayout.setVisibility(View.VISIBLE);
             } catch (Exception e) {
                 e.printStackTrace();
             }
