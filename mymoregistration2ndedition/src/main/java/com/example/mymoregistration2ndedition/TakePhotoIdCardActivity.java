@@ -13,7 +13,11 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class TakePhotoIdCardActivity extends AppCompatActivity {
@@ -26,6 +30,10 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
     Button cameraBtn;
     ImageView imageView;
     Button nextBtn;
+    TextView registerTimestamp;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String currentDate = sdf.format(new Date());
 
 
     @Override
@@ -69,6 +77,8 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
 
         cameraPreviewLayout = findViewById(R.id.camera_preview);
         imageView = findViewById(R.id.imageView1);
+        registerTimestamp = findViewById(R.id.register_timestamp);
+        registerTimestamp.setText(currentDate);
 
         camera = checkDeviceCamera();
         camera.setDisplayOrientation(90);
