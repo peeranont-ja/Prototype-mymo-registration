@@ -30,11 +30,12 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
     ImageButton cameraBtn;
     ImageView imageView;
     Button nextBtn;
-//    TextView registerTimestamp;
-//
-//    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//    String currentDate = sdf.format(new Date());
-
+    //    TextView registerTimestamp;
+    //
+    //    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    //    String currentDate = sdf.format(new Date());
+    TextView takePhotoDescription;
+    boolean isAlreadyTakePhoto = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +90,20 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                camera.takePicture(null, null, pictureCallback);
+                if (isAlreadyTakePhoto == true) {
+                    cameraPreviewLayout.removeView(mImageSurfaceView);
+                    cameraPreviewLayout.addView(mImageSurfaceView);
+                    takePhotoDescription.setText(R.string.take_photo_description);
+                    isAlreadyTakePhoto = false;
+                    nextBtn.setVisibility(View.INVISIBLE);
+                } else {
+                    camera.takePicture(null, null, pictureCallback);
+                    takePhotoDescription.setText(R.string.retake_id_card_photo_description);
+                    isAlreadyTakePhoto = true;
+                }
             }
         });
-
+        takePhotoDescription = findViewById(R.id.take_id_card_photo_description);
 
     }
 
@@ -125,5 +136,12 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
         return resizedBitmap;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        nextBtn.setVisibility(View.INVISIBLE);
+        takePhotoDescription.setText(R.string.take_photo_description);
+        isAlreadyTakePhoto = false;
 
+    }
 }

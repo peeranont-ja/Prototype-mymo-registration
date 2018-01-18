@@ -97,6 +97,7 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
                     cameraPreviewLayout.addView(mImageSurfaceView);
                     takePhotoDescription.setText(R.string.take_id_card_photo_description);
                     isAlreadyTakePhoto = false;
+                    nextBtn.setVisibility(View.VISIBLE);
                 } else {
                     camera.takePicture(null, null, pictureCallback);
                     takePhotoDescription.setText(R.string.retake_id_card_photo_description);
@@ -135,6 +136,15 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
     private Bitmap scaleDownBitmapImage(Bitmap bitmap, int newWidth, int newHeight) {
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
         return resizedBitmap;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        nextBtn.setVisibility(View.INVISIBLE);
+        takePhotoDescription.setText(R.string.take_id_card_photo_description);
+        isAlreadyTakePhoto = false;
+
     }
 
 
