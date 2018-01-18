@@ -74,7 +74,7 @@
             android:background="@null"
             android:scaleType="centerInside"
             android:src="@drawable/ic_camera_focus_transparent"
-            android:tint="#FFFFFF" />
+            android:tint="#FFCB03" />
 
 
         <!--<TextView-->

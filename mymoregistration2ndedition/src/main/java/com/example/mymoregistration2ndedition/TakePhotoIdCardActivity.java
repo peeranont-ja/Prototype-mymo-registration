@@ -99,7 +99,17 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
                     isAlreadyTakePhoto = false;
                     nextBtn.setVisibility(View.VISIBLE);
                 } else {
-                    camera.takePicture(null, null, pictureCallback);
+                    String focusMode = camera.getParameters().getFocusMode();
+                    if (focusMode.equals(Camera.Parameters.FOCUS_MODE_AUTO) || focusMode.equals(Camera.Parameters.FOCUS_MODE_MACRO)) {
+                        camera.autoFocus(new Camera.AutoFocusCallback() {
+                            @Override
+                            public void onAutoFocus(boolean success, Camera camera) {
+                                camera.takePicture(null, null, pictureCallback);
+                            }
+                        });
+                    } else {
+                        camera.takePicture(null, null, pictureCallback);
+                    }
                     takePhotoDescription.setText(R.string.retake_id_card_photo_description);
                     isAlreadyTakePhoto = true;
                 }
