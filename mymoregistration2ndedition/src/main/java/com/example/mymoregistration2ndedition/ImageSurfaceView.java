@@ -24,7 +24,7 @@ public class ImageSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     public void surfaceCreated(SurfaceHolder holder) {
         try {
             this.camera.setPreviewDisplay(holder);
-            this.camera.startPreview();
+//            this.camera.startPreview();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,7 +32,7 @@ public class ImageSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
+        camera.startPreview();
     }
 
     @Override

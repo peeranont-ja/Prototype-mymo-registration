@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mymoregistration2ndedition.TakePhotoIdCardActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_30" />
+
+    <View
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="63dp"
+        android:background="@android:color/white" />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="63dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_back_arrow" />
+
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_width="110dp"
+        android:layout_height="94dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="362dp"
+        android:layout_marginRight="73dp"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <!--<ImageView-->
+    <!--android:id="@+id/imageView1"-->
+    <!--android:layout_width="502.15dp"-->
+    <!--android:layout_height="376.62dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:layout_marginLeft="90dp"-->
+    <!--android:layout_marginTop="538dp"-->
+    <!--android:background="@drawable/border"-->
+    <!--&gt;-->
+    <!--</ImageView>-->
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="334dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/btn_round_transparent"
+        android:text="@string/next_button"
+        android:textColor="#707070"
+        android:textSize="20dp" />
+
+    <View
+
+        android:layout_width="340dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="@android:color/white" />
+
+</RelativeLayout>

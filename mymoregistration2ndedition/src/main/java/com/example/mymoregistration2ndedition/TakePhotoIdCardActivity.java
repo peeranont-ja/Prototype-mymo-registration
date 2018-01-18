@@ -2,16 +2,11 @@ package com.example.mymoregistration2ndedition;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,12 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.otaliastudios.cameraview.CameraListener;
-import com.otaliastudios.cameraview.CameraView;
-import com.otaliastudios.cameraview.Gesture;
-import com.otaliastudios.cameraview.GestureAction;
-import com.otaliastudios.cameraview.Size;
 
 
 public class TakePhotoIdCardActivity extends AppCompatActivity {
@@ -68,12 +57,12 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
         });
 
 
-
         nextBtn = findViewById(R.id.btn_next);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TakePhotoIdCardActivity.this, TermsAndConditionsActivity.class);
+                Intent i = new Intent(TakePhotoIdCardActivity.this,
+                        VerifyCustomerInfoShowPicActivity.class);
                 startActivity(i);
             }
         });
@@ -93,9 +82,11 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
                 camera.takePicture(null, null, pictureCallback);
             }
         });
+
+
     }
 
-    private Camera checkDeviceCamera(){
+    private Camera checkDeviceCamera() {
         Camera mCamera = null;
         try {
             mCamera = Camera.open();
@@ -105,19 +96,21 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
         return mCamera;
     }
 
+
     Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
             Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-            if(bitmap==null){
+            if (bitmap == null) {
                 Toast.makeText(TakePhotoIdCardActivity.this, "Captured image is empty", Toast.LENGTH_LONG).show();
                 return;
             }
-            imageView.setImageBitmap(scaleDownBitmapImage(bitmap, 300, 200 ));
+            imageView.setImageBitmap(scaleDownBitmapImage(bitmap, 642, 447));
+            nextBtn.setVisibility(View.VISIBLE);
         }
     };
 
-    private Bitmap scaleDownBitmapImage(Bitmap bitmap, int newWidth, int newHeight){
+    private Bitmap scaleDownBitmapImage(Bitmap bitmap, int newWidth, int newHeight) {
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
         return resizedBitmap;
     }

@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".MenuActivity" />
         <activity android:name=".VerifyCustomerInfoActivity" />
+        <activity android:name=".VerifyCustomerInfoShowPicActivity" />
         <activity android:name=".TermsAndConditionsActivity" />
         <activity android:name=".TakePhotoPersonActivity" />
         <activity android:name=".SummaryActivity" />
