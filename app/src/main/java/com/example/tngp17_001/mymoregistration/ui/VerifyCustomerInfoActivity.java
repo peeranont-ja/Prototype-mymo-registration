@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tngp17_001.mymoregistration.R;
@@ -44,6 +45,11 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     public static final int REQUEST_CAMERA = 2;
     ImageView imageView;
     Uri uri;
+
+    TextView registerTimestamp;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String currentDate = sdf.format(new Date());
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -75,6 +81,9 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         nextBtn = findViewById(R.id.btn_next);
         queryBtn = findViewById(R.id.btn_query);
         watermarkLayout = findViewById(R.id.watermark_layout);
+
+        registerTimestamp = findViewById(R.id.register_timestamp);
+        registerTimestamp.setText(currentDate);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -39,7 +39,58 @@
         android:background="@drawable/btn_round_transparent"
         android:text="เปิดใช้บริการ"
         android:textColor="#707070"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/watermark_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="370dp"
+        android:layout_marginLeft="130dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:alpha="0.8"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo_gsb"
+            android:tint="#FFFFFF"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:alpha="0.8"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:alpha="0.8"
+            android:text="ใช้สำหรับการสมัคร MyMo เท่านั้น"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/register_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:alpha="0.8"
+            android:text="31/12/1995"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
 </RelativeLayout>

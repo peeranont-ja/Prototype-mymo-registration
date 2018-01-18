@@ -21,12 +21,20 @@ import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.tngp17_001.mymoregistration.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static com.example.tngp17_001.mymoregistration.R.layout.dialog_send_sms;
 
 public class SummaryActivity extends AppCompatActivity {
 
     ImageButton backBtn;
     Button finishBtn;
+
+    TextView registerTimestamp;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String currentDate = sdf.format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +63,9 @@ public class SummaryActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        registerTimestamp = findViewById(R.id.register_timestamp);
+        registerTimestamp.setText(currentDate);
 
         final Dialog dialog = new Dialog(SummaryActivity.this);
         dialog.setTitle("Password Dialog");
