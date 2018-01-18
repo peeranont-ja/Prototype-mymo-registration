@@ -97,7 +97,7 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
                     cameraPreviewLayout.addView(mImageSurfaceView);
                     takePhotoDescription.setText(R.string.take_id_card_photo_description);
                     isAlreadyTakePhoto = false;
-                    nextBtn.setVisibility(View.VISIBLE);
+                    nextBtn.setVisibility(View.INVISIBLE);
                 } else {
                     String focusMode = camera.getParameters().getFocusMode();
                     if (focusMode.equals(Camera.Parameters.FOCUS_MODE_AUTO) || focusMode.equals(Camera.Parameters.FOCUS_MODE_MACRO)) {
