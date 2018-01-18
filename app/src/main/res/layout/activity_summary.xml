@@ -39,7 +39,7 @@
         android:background="@drawable/btn_round_transparent"
         android:text="เปิดใช้บริการ"
         android:textColor="#707070"
-        android:textSize="24dp"/>
+        android:textSize="24sp"/>
 
 
 </RelativeLayout>

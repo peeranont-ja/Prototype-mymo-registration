@@ -132,7 +132,7 @@
         android:background="@drawable/btn_round_transparent"
         android:text="ถัดไป"
         android:textColor="#707070"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:visibility="invisible" />
 
 

@@ -12,7 +12,7 @@
         android:text="กรอกรหัสพนักงาน"
         android:textAlignment="center"
         android:textColor="#2B2B2B"
-        android:textSize="24dp"
+        android:textSize="24sp"
 
         />
 
@@ -29,7 +29,7 @@
         android:text="กรุณาใส่รหัสพนักงานเพื่อยืนยัน"
         android:textAlignment="center"
         android:textColor="#676767"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/password"
@@ -42,7 +42,7 @@
         android:inputType="textPassword"
         android:maxLength="10"
         android:textColor="#070707"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btn_send_password"
@@ -57,6 +57,6 @@
         android:text="ยืนยัน"
         android:textAlignment="center"
         android:textColor="#676767"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
 </LinearLayout>

@@ -39,7 +39,7 @@
         android:gravity="center"
         android:inputType="number"
         android:textColor="#070707"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:maxLength="10"/>
 
     <Button
@@ -55,6 +55,6 @@
         android:text="ส่งรหัส"
         android:textAlignment="center"
         android:textColor="#676767"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
 </LinearLayout>

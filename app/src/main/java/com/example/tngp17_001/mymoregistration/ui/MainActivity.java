@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent( MainActivity.this, IdQueryActivity.class);
+                Intent i = new Intent( MainActivity.this, VerifyCustomerInfoActivity.class);
 
                 startActivity(i);
             }

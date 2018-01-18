@@ -44,7 +44,7 @@ public class IdQueryActivity extends AppCompatActivity {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(IdQueryActivity.this, VerifyCustomerInfoActivity.class);
+                Intent i = new Intent(IdQueryActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
