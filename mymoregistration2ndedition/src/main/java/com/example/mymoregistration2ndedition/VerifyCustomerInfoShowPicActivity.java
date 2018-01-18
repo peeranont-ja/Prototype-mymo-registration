@@ -68,8 +68,7 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
 //                startActivityForResult(intent, 0);
 //                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 //                startActivityForResult(cameraIntent, CAMERA_REQUEST);
-                Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TakePhotoIdCardActivity.class);
-                startActivity(i);
+                finish();
             }
         });
 
