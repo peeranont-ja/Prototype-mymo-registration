@@ -10,7 +10,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
 
@@ -19,6 +23,11 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
     Button nextBtn;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     private static final int CAMERA_REQUEST = 1888;
+
+    TextView registerTimestamp;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String currentDate = sdf.format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +56,20 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
             }
         });
 
+        registerTimestamp = findViewById(R.id.register_timestamp);
+        registerTimestamp.setText(currentDate);
+
+
         cameraBtn = findViewById(R.id.btn_camera);
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
 //                startActivityForResult(intent, 0);
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+//                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TakePhotoIdCardActivity.class);
+                startActivity(i);
             }
         });
 

@@ -8,11 +8,20 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SummaryActivity extends AppCompatActivity {
 
     ImageButton backBtn;
     Button finishBtn;
+
+    TextView registerTimestamp;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String currentDate = sdf.format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,10 @@ public class SummaryActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        registerTimestamp = findViewById(R.id.register_timestamp);
+        registerTimestamp.setText(currentDate);
+
 
         final Dialog dialog = new Dialog(SummaryActivity.this);
         dialog.setTitle("Password Dialog");
@@ -89,7 +102,7 @@ public class SummaryActivity extends AppCompatActivity {
         backToMainMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SummaryActivity.this, MainActivity.class);
+                Intent i = new Intent(SummaryActivity.this, MenuActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
