@@ -27,13 +27,15 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
     private Camera camera;
 
     private FrameLayout cameraPreviewLayout;
-    Button cameraBtn;
+    ImageButton cameraBtn;
     ImageView imageView;
     Button nextBtn;
     TextView registerTimestamp;
+    TextView takePhotoDescription;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String currentDate = sdf.format(new Date());
+    boolean isAlreadyTakePhoto = false;
 
 
     @Override
@@ -79,6 +81,7 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView1);
         registerTimestamp = findViewById(R.id.register_timestamp);
         registerTimestamp.setText(currentDate);
+        takePhotoDescription = findViewById(R.id.take_id_card_photo_description);
 
         camera = checkDeviceCamera();
         camera.setDisplayOrientation(90);
@@ -89,7 +92,16 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                camera.takePicture(null, null, pictureCallback);
+                if (isAlreadyTakePhoto == true) {
+                    cameraPreviewLayout.removeView(mImageSurfaceView);
+                    cameraPreviewLayout.addView(mImageSurfaceView);
+                    takePhotoDescription.setText(R.string.take_id_card_photo_description);
+                    isAlreadyTakePhoto = false;
+                } else {
+                    camera.takePicture(null, null, pictureCallback);
+                    takePhotoDescription.setText(R.string.retake_id_card_photo_description);
+                    isAlreadyTakePhoto = true;
+                }
             }
         });
 

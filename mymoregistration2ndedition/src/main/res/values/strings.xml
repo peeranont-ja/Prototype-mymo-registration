@@ -20,4 +20,6 @@
     <string name="search_id_description">ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน</string>
     <string name="main_menu">กลับสู่เมนูหลัก</string>
     <string name="sms_description">หมายเลขโทรศัพท์ที่จะใช้สมัครบริการ MyMo</string>
+    <string name="take_id_card_photo_description">กรุณาถ่ายรูปบัตรประจำตัวประชาชนของลูกค้า</string>
+    <string name="retake_id_card_photo_description">หากต้องการถ่ายใหม่\nโปรดกดที่ปุ่มถ่ายภาพอีกครั้ง</string>
 </resources>
