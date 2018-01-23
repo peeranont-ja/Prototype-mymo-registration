@@ -33,12 +33,13 @@
                 android:id="@+id/terms_and_conditions_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:lineSpacingExtra="9dp"
                 android:paddingLeft="40dp"
-                android:paddingRight="30dp"
+                android:paddingRight="40dp"
                 android:paddingTop="10dp"
                 android:text=""
-                android:textSize="18dp"
-                android:textColor="#707070"/>
+                android:textColor="#707070"
+                android:textSize="19dp" />
 
         </LinearLayout>
     </ScrollView>
@@ -61,56 +62,56 @@
         android:src="@drawable/ic_back_arrow" />
 
     <!--<RelativeLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="536dp">-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="536dp">-->
 
-        <!--<com.github.gcacace.signaturepad.views.SignaturePad-->
-            <!--android:id="@+id/signature_pad"-->
-            <!--android:layout_width="685dp"-->
-            <!--android:layout_height="300dp"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:background="@drawable/signature_pad_round_border_white"-->
-            <!--app:penColor="@android:color/black" />-->
+    <!--<com.github.gcacace.signaturepad.views.SignaturePad-->
+    <!--android:id="@+id/signature_pad"-->
+    <!--android:layout_width="685dp"-->
+    <!--android:layout_height="300dp"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:background="@drawable/signature_pad_round_border_white"-->
+    <!--app:penColor="@android:color/black" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/sign_description"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:text="@string/signature_hint"-->
-            <!--android:textColor="#707070"-->
-            <!--android:textSize="24dp" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/sign_description"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:text="@string/signature_hint"-->
+    <!--android:textColor="#707070"-->
+    <!--android:textSize="24dp" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/undo_signature"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:padding="5dp"-->
-            <!--android:layout_marginRight="50dp"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:text=""-->
-            <!--android:textColor="#707070"-->
-            <!--android:textSize="22dp"-->
-            <!--android:visibility="invisible" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/undo_signature"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:padding="5dp"-->
+    <!--android:layout_marginRight="50dp"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:text=""-->
+    <!--android:textColor="#707070"-->
+    <!--android:textSize="22dp"-->
+    <!--android:visibility="invisible" />-->
 
     <!--</RelativeLayout>-->
 
     <!--<TextView-->
-        <!--android:id="@+id/signature_pad_description"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_marginBottom="122dp"-->
-        <!--android:gravity="center"-->
-        <!--android:text="@string/accept_terms_ans_conditions_description"-->
-        <!--android:textColor="#707070"-->
-        <!--android:textSize="24dp"-->
-        <!--android:visibility="invisible" />-->
+    <!--android:id="@+id/signature_pad_description"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginBottom="122dp"-->
+    <!--android:gravity="center"-->
+    <!--android:text="@string/accept_terms_ans_conditions_description"-->
+    <!--android:textColor="#707070"-->
+    <!--android:textSize="24dp"-->
+    <!--android:visibility="invisible" />-->
 
     <View
         android:id="@+id/btn_accept_bg"

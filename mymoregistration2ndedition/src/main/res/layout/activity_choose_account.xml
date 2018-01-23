@@ -29,22 +29,25 @@
         android:scaleType="fitXY"
         android:src="@drawable/ic_back_arrow" />
 
-    <Spinner android:layout_width="wrap_content"
+    <Spinner
+        android:layout_width="349dp"
         android:layout_height="wrap_content"
-        android:id="@+id/account_relationship">
+        android:id="@+id/account_relationship"
+        android:layout_marginTop="349dp"
+        android:paddingLeft="31dp"
+        android:layout_marginLeft="85dp"
+        />
 
-    </Spinner>
 
-    <Spinner android:layout_width="wrap_content"
+    <Spinner
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/account_type">
+        android:id="@+id/account_type"/>
 
-    </Spinner>
-
-    <Spinner android:layout_width="wrap_content"
+    <Spinner
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/account_subtype">
+        android:id="@+id/account_subtype"/>
 
-    </Spinner>
 
 </RelativeLayout>
