@@ -39,17 +39,14 @@ import java.io.OutputStreamWriter;
 
 public class TermsAndConditionsActivity extends AppCompatActivity {
 
-    private ImageButton backBtn;
-    private Button nextBtn;
-    private ScrollView termsAndConditionsScrollView;
-    private TextView termsAndConditions;
-    private TextView signPlaceholderDescription;
-    private LinearLayout eraser;
-    private ImageButton eraserIcon;
-    private TextView eraserText;
+    ImageButton backBtn;
     private SignaturePad mSignaturePad;
-    private TextView agreementDescription;
-    private Button acceptBtn;
+    private TextView signAgreement;
+    private TextView undoSignature;
+    private TextView signDescription;
+    private Button mSaveButton;
+    private View mSaveButtonBg;
+    private TextView termsAndConditions;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
@@ -82,7 +79,6 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         backBtn = findViewById(R.id.btn_back);
-        nextBtn = findViewById(R.id.btn_next);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,111 +87,59 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
         });
 
 
+        mSignaturePad = findViewById(R.id.signature_pad);
+        signAgreement = findViewById(R.id.signature_pad_description);
+        undoSignature = findViewById(R.id.undo_signature);
+        undoSignature.setText(Html.fromHtml("<u>แก้ไข</u>"));
+        signDescription = findViewById(R.id.sign_description);
+        mSaveButton = findViewById(R.id.btn_accept);
+        mSaveButtonBg = findViewById(R.id.btn_accept_bg);
         termsAndConditions = findViewById(R.id.terms_and_conditions_description);
         termsAndConditions.setText(Html.fromHtml(getString(R.string.terms_and_conditions)));
-
-        termsAndConditionsScrollView = findViewById(R.id.scroll_view_terms_and_conditions);
-        termsAndConditionsScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                if (termsAndConditionsScrollView != null) {
-                    if (termsAndConditionsScrollView.getChildAt(0).getBottom() <=
-                            (termsAndConditionsScrollView.getHeight() +
-                                    termsAndConditionsScrollView.getScrollY())) {
-                        //scroll view is at bottom
-                        nextBtn.setVisibility(View.VISIBLE);
-                    } else {
-                        //scroll view is not at bottom
-                        nextBtn.setVisibility(View.INVISIBLE);
-                    }
-                }
-            }
-        });
-
-
-        final AlertDialog.Builder builder =
-                new AlertDialog.Builder(TermsAndConditionsActivity.this);
-        LayoutInflater inflater = getLayoutInflater();
-
-        View layout = inflater.inflate(R.layout.dialog_signature_pad, null);
-        builder.setView(layout);
-        final AlertDialog alertDialog = builder.create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-        signPlaceholderDescription = layout.findViewById(R.id.sign_description);
-        eraser = layout.findViewById(R.id.eraser_layout);
-        eraserIcon = layout.findViewById(R.id.eraser_icon);
-        eraserText = layout.findViewById(R.id.eraser_text);
-        mSignaturePad = layout.findViewById(R.id.signature_pad);
-        agreementDescription = layout.findViewById(R.id.agreement_description);
-        acceptBtn = layout.findViewById(R.id.btn_accept);
-
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.show();
-                alertDialog.getWindow().setLayout((int) (windowsWidth * 0.9), (int) (windowsHeight * 0.8));
-
-            }
-        });
 
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
-                signPlaceholderDescription.setVisibility(View.INVISIBLE);
-                eraser.setVisibility(View.VISIBLE);
-                eraserIcon.setVisibility(View.VISIBLE);
-                eraserText.setVisibility(View.VISIBLE);
-                acceptBtn.setVisibility(View.VISIBLE);
-                agreementDescription.setVisibility(View.VISIBLE);
+                signDescription.setVisibility(View.INVISIBLE);
+                undoSignature.setVisibility(View.VISIBLE);
+
+
             }
 
             @Override
             public void onSigned() {
+                mSaveButton.setVisibility(View.VISIBLE);
+                mSaveButtonBg.setVisibility(View.INVISIBLE);
+                signAgreement.setVisibility(View.VISIBLE);
+
             }
 
             @Override
             public void onClear() {
-                signPlaceholderDescription.setVisibility(View.VISIBLE);
-                eraser.setVisibility(View.INVISIBLE);
-                eraserIcon.setVisibility(View.INVISIBLE);
-                eraserText.setVisibility(View.INVISIBLE);
-                acceptBtn.setVisibility(View.INVISIBLE);
-                agreementDescription.setVisibility(View.INVISIBLE);
+                signDescription.setVisibility(View.VISIBLE);
+                mSaveButton.setVisibility(View.INVISIBLE);
+                mSaveButtonBg.setVisibility(View.VISIBLE);
+                undoSignature.setVisibility(View.INVISIBLE);
+                signAgreement.setVisibility(View.INVISIBLE);
             }
         });
 
-        eraser.setOnClickListener(new View.OnClickListener() {
+        undoSignature.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSignaturePad.clear();
             }
         });
-        eraserIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSignaturePad.clear();
-            }
-        });
-        eraserText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSignaturePad.clear();
-            }
-        });
-
-        acceptBtn.setOnClickListener(new View.OnClickListener() {
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bitmap signatureBitmap = mSignaturePad.getTransparentSignatureBitmap();
-                if (addPngSignatureToGallery(signatureBitmap)) {
-                } else {
-                }
-                if (addSvgSignatureToGallery(mSignaturePad.getSignatureSvg())) {
-                } else {
-                }
+                if (addPngSignatureToGallery(signatureBitmap)) {}
+                else {}
+                if (addSvgSignatureToGallery(mSignaturePad.getSignatureSvg())) {}
+                else {}
 
-                Intent i = new Intent(TermsAndConditionsActivity.this, TakePhotoPersonActivity.class);
+                Intent i = new Intent(TermsAndConditionsActivity.this, SummaryActivity.class);
                 startActivity(i);
             }
         });
