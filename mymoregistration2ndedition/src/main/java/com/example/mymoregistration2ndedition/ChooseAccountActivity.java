@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -12,6 +13,8 @@ public class ChooseAccountActivity extends AppCompatActivity {
     Spinner accountRelationship;
     Spinner accountType;
     Spinner accountSubtype;
+    int onItemselected = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,37 @@ public class ChooseAccountActivity extends AppCompatActivity {
         accountRelationship = findViewById(R.id.account_relationship);
         String[] accountRelationshipStringList = getResources().getStringArray(R.array.account_relationship);
         ArrayAdapter<String> adapterAccountRelationship = new ArrayAdapter<>(this,
-                android.R.layout.simple_dropdown_item_1line, accountRelationshipStringList);
+                R.layout.spinner_item, accountRelationshipStringList);
         accountRelationship.setAdapter(adapterAccountRelationship);
+
+        accountType = findViewById(R.id.account_type);
+        String[] accountTypeStringList = getResources().getStringArray(R.array.account_type);
+        ArrayAdapter<String> adapterAccountType = new ArrayAdapter<>(this,
+                R.layout.spinner_item, accountTypeStringList);
+        accountType.setAdapter(adapterAccountType);
+
+        accountSubtype = findViewById(R.id.account_subtype);
+        String[] accountSubtypeStringList = getResources().getStringArray(R.array.account_subtype_sav);
+        ArrayAdapter<String> adapterAccountSubtype = new ArrayAdapter<>(this,
+                R.layout.spinner_item, accountSubtypeStringList);
+        accountSubtype.setAdapter(adapterAccountSubtype);
+
+        accountType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(onItemselected == 0){
+                    accountSubtype.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    accountSubtype.setVisibility(View.VISIBLE);
+                }
+                onItemselected++;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                accountSubtype.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }

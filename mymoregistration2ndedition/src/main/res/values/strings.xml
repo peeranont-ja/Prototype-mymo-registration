@@ -37,7 +37,7 @@
     </string-array>
 
     <string-array name="account_subtype_sav">
-        <item>2001-บัญชีเผื่อเรียก</item>
-        <item>2002-บัญชีเผื่อเรียกพิเศษ</item>
+        <item>2001 - บัญชีเผื่อเรียก</item>
+        <item>2002 - บัญชีเผื่อเรียกพิเศษ</item>
     </string-array>
 </resources>
