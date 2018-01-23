@@ -42,7 +42,9 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
     ImageButton backBtn;
     private SignaturePad mSignaturePad;
     private TextView signAgreement;
-    private TextView undoSignature;
+    private LinearLayout eraser;
+    private ImageButton eraserIcon;
+    private TextView eraserText;
     private TextView signDescription;
     private Button mSaveButton;
     private View mSaveButtonBg;
@@ -89,8 +91,9 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
 
         mSignaturePad = findViewById(R.id.signature_pad);
         signAgreement = findViewById(R.id.signature_pad_description);
-        undoSignature = findViewById(R.id.undo_signature);
-        undoSignature.setText(Html.fromHtml("<u>แก้ไข</u>"));
+        eraser = findViewById(R.id.eraser_layout);
+        eraserIcon = findViewById(R.id.eraser_icon);
+        eraserText = findViewById(R.id.eraser_text);
         signDescription = findViewById(R.id.sign_description);
         mSaveButton = findViewById(R.id.btn_accept);
         mSaveButtonBg = findViewById(R.id.btn_accept_bg);
@@ -101,7 +104,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
             @Override
             public void onStartSigning() {
                 signDescription.setVisibility(View.INVISIBLE);
-                undoSignature.setVisibility(View.VISIBLE);
+                eraser.setVisibility(View.VISIBLE);
 
 
             }
@@ -119,12 +122,24 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
                 signDescription.setVisibility(View.VISIBLE);
                 mSaveButton.setVisibility(View.INVISIBLE);
                 mSaveButtonBg.setVisibility(View.VISIBLE);
-                undoSignature.setVisibility(View.INVISIBLE);
+                eraser.setVisibility(View.INVISIBLE);
                 signAgreement.setVisibility(View.INVISIBLE);
             }
         });
 
-        undoSignature.setOnClickListener(new View.OnClickListener() {
+        eraser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSignaturePad.clear();
+            }
+        });
+        eraserIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSignaturePad.clear();
+            }
+        });
+        eraserText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSignaturePad.clear();
@@ -134,10 +149,12 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bitmap signatureBitmap = mSignaturePad.getTransparentSignatureBitmap();
-                if (addPngSignatureToGallery(signatureBitmap)) {}
-                else {}
-                if (addSvgSignatureToGallery(mSignaturePad.getSignatureSvg())) {}
-                else {}
+                if (addPngSignatureToGallery(signatureBitmap)) {
+                } else {
+                }
+                if (addSvgSignatureToGallery(mSignaturePad.getSignatureSvg())) {
+                } else {
+                }
 
                 Intent i = new Intent(TermsAndConditionsActivity.this, SummaryActivity.class);
                 startActivity(i);

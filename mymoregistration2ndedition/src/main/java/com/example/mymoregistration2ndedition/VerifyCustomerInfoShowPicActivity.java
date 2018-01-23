@@ -83,15 +83,9 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(transactionNumber != 0) {
-                    Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TermsAndConditionsActivity.class);
-                    i.putExtra("transactionNumber", transactionNumber);
-                    startActivity(i);
-                }else{
-                    Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TakePhotoPersonActivity.class);
-                    i.putExtra("transactionNumber", transactionNumber);
-                    startActivity(i);
-                }
+                Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TakePhotoPersonActivity.class);
+                i.putExtra("transactionNumber", transactionNumber);
+                startActivity(i);
             }
         });
     }

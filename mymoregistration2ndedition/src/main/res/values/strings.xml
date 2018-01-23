@@ -8,7 +8,7 @@
     <string name="accept_terms_ans_conditions_description">การกดปุ่มด้านล่างถือเป็นการยินยอมเงื่อนไขและข้อตกลง\nในการสมัครใช้บริการ MyMo</string>
     <string name="accept_button">ยอมรับเงื่อนไขและข้อตกลง</string>
     <string name="next_button">ถัดไป</string>
-    <string name="signature_hint">กรุณาเซ็นชื่อในช่องว่างเพื่อยอมรับเงื่อนไขและข้อตกลง</string>
+    <string name="signature_hint">กรุณาเซ็นชื่อในช่องนี้เพื่อยอมรับเงื่อนไขและข้อตกลงในการสมัครใช้บริการ MyMo</string>
     <string name="take_photo_description">กรุณาถ่ายรูปผู้สมัคร\nให้ใบหน้าอยู่ภายในกรอบที่กำหนด</string>
     <string name="terms_and_conditions">
         <![CDATA[

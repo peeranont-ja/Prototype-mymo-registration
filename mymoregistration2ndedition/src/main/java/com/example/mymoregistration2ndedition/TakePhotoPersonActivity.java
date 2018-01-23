@@ -79,7 +79,7 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (transactionNumber != 0) {
-                    Intent i = new Intent(TakePhotoPersonActivity.this, SummaryActivity.class);
+                    Intent i = new Intent(TakePhotoPersonActivity.this, TermsAndConditionsActivity.class);
                     i.putExtra("transactionNumber", transactionNumber);
                     startActivity(i);
                 } else {
