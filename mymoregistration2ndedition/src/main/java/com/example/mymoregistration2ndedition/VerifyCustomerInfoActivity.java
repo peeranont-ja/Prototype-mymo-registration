@@ -41,13 +41,20 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     public static final int REQUEST_CAMERA = 2;
     ImageView imageView;
     Uri uri;
+    int transactionNumber;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         permissionCheck();
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            transactionNumber = bundle.getInt("transactionNumber");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_customer_info);
+
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -132,6 +139,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
 //                startActivityForResult(Intent.createChooser(intent
 //                        , "Take a picture with"), REQUEST_CAMERA);
                 Intent i = new Intent(VerifyCustomerInfoActivity.this, TakePhotoIdCardActivity.class);
+                i.putExtra("transactionNumber", transactionNumber);
                 startActivity(i);
             }
         });
@@ -187,8 +195,8 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
             }
         }
     }
-    protected void hideKeyboard(View view)
-    {
+
+    protected void hideKeyboard(View view) {
         InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }

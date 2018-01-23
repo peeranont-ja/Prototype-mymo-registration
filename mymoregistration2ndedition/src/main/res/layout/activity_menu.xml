@@ -22,4 +22,13 @@
         android:background="?android:attr/selectableItemBackground"
         android:layout_alignParentLeft="true"/>
 
+    <Button
+        android:id="@+id/btn_open_account"
+        android:layout_width="160dp"
+        android:layout_height="152dp"
+        android:layout_marginLeft="127dp"
+        android:layout_marginTop="160dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_alignParentLeft="true"/>
+
 </RelativeLayout>

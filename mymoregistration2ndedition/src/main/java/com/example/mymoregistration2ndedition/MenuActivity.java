@@ -10,6 +10,8 @@ import android.widget.Button;
 public class MenuActivity extends AppCompatActivity {
 
     Button registerBtn;
+    Button openBookBtn;
+    int transactionNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,24 @@ public class MenuActivity extends AppCompatActivity {
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        openBookBtn = findViewById(R.id.btn_open_account);
+        openBookBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transactionNumber = 0;
+                Intent i = new Intent(MenuActivity.this, VerifyCustomerInfoActivity.class);
+                i.putExtra("transactionNumber", transactionNumber);
+                startActivity(i);
+            }
+        });
+
         registerBtn = findViewById(R.id.btn_register);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent( MenuActivity.this, VerifyCustomerInfoActivity.class);
+                transactionNumber = 1;
+                Intent i = new Intent(MenuActivity.this, VerifyCustomerInfoActivity.class);
+                i.putExtra("transactionNumber", transactionNumber);
                 startActivity(i);
             }
         });

@@ -22,4 +22,22 @@
     <string name="sms_description">หมายเลขโทรศัพท์ที่จะใช้สมัครบริการ MyMo</string>
     <string name="take_id_card_photo_description">กรุณาถ่ายรูปบัตรประจำตัวประชาชนของลูกค้า</string>
     <string name="retake_id_card_photo_description">หากต้องการถ่ายใหม่\nโปรดกดที่ปุ่มถ่ายภาพอีกครั้ง</string>
+
+    <string-array name="account_relationship">
+        <item>Single</item>
+        <item>Joint (by) Joint</item>
+        <item>Joint (and) Joint</item>
+        <item>Joint (or) Joint</item>
+    </string-array>
+
+    <string-array name="account_type">
+        <item>SAV</item>
+        <item>DDA</item>
+        <item>CD</item>
+    </string-array>
+
+    <string-array name="account_subtype_sav">
+        <item>2001-บัญชีเผื่อเรียก</item>
+        <item>2002-บัญชีเผื่อเรียกพิเศษ</item>
+    </string-array>
 </resources>

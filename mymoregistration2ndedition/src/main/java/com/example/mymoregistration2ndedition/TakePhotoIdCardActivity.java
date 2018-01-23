@@ -37,12 +37,19 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
     String currentDate = sdf.format(new Date());
     boolean isAlreadyTakePhoto = false;
 
+    int transactionNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_photo_id_card);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            transactionNumber = bundle.getInt("transactionNumber");
+        }
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -73,6 +80,7 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(TakePhotoIdCardActivity.this,
                         VerifyCustomerInfoShowPicActivity.class);
+                i.putExtra("transactionNumber", transactionNumber);
                 startActivity(i);
             }
         });

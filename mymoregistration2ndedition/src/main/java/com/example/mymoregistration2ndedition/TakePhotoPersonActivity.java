@@ -37,11 +37,19 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
     TextView takePhotoDescription;
     boolean isAlreadyTakePhoto = false;
 
+    int transactionNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_photo_person);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            transactionNumber = bundle.getInt("transactionNumber");
+        }
+
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -70,9 +78,15 @@ public class TakePhotoPersonActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TakePhotoPersonActivity.this,
-                        SummaryActivity.class);
-                startActivity(i);
+                if (transactionNumber != 0) {
+                    Intent i = new Intent(TakePhotoPersonActivity.this, SummaryActivity.class);
+                    i.putExtra("transactionNumber", transactionNumber);
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(TakePhotoPersonActivity.this, ChooseAccountActivity.class);
+                    i.putExtra("transactionNumber", transactionNumber);
+                    startActivity(i);
+                }
             }
         });
 

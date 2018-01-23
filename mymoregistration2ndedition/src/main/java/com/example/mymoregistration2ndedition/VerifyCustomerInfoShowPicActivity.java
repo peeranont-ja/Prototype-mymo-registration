@@ -26,6 +26,8 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
 
     TextView registerTimestamp;
 
+    int transactionNumber;
+
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String currentDate = sdf.format(new Date());
 
@@ -33,6 +35,11 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_customer_info_show_pic);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            transactionNumber = bundle.getInt("transactionNumber");
+        }
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -76,8 +83,15 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TermsAndConditionsActivity.class);
-                startActivity(i);
+                if(transactionNumber != 0) {
+                    Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TermsAndConditionsActivity.class);
+                    i.putExtra("transactionNumber", transactionNumber);
+                    startActivity(i);
+                }else{
+                    Intent i = new Intent(VerifyCustomerInfoShowPicActivity.this, TakePhotoPersonActivity.class);
+                    i.putExtra("transactionNumber", transactionNumber);
+                    startActivity(i);
+                }
             }
         });
     }
