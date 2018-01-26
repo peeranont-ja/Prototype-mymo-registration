@@ -24,6 +24,7 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
     private Button mSaveButton;
     private View mSaveButtonBg;
     private TextView termsAndConditions;
+    private ImageView mainBg;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
     int transactionNumber;
@@ -86,8 +88,10 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
-
+        mainBg = findViewById(R.id.main_bg);
+        if (transactionNumber == 0) {
+            mainBg.setImageResource(R.drawable.background_91);
+        }
         backBtn = findViewById(R.id.btn_back);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,6 +169,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
                 }
 
                 Intent i = new Intent(TermsAndConditionsActivity.this, SummaryActivity.class);
+                i.putExtra("transactionNumber", transactionNumber);
                 startActivity(i);
             }
         });

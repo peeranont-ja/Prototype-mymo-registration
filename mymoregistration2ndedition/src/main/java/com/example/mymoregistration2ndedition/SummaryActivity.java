@@ -17,8 +17,9 @@ public class SummaryActivity extends AppCompatActivity {
 
     ImageButton backBtn;
     Button finishBtn;
-
+    TextView openAccountHeader;
     TextView registerTimestamp;
+    int transactionNumber;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String currentDate = sdf.format(new Date());
@@ -28,6 +29,11 @@ public class SummaryActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            transactionNumber = bundle.getInt("transactionNumber");
+        }
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -42,6 +48,11 @@ public class SummaryActivity extends AppCompatActivity {
             if (actionBar != null) actionBar.hide();
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        openAccountHeader = findViewById(R.id.open_account_header);
+        if (transactionNumber == 0){
+            openAccountHeader.setVisibility(View.VISIBLE);
+        }
 
         backBtn = findViewById(R.id.btn_back);
         backBtn.setOnClickListener(new View.OnClickListener() {

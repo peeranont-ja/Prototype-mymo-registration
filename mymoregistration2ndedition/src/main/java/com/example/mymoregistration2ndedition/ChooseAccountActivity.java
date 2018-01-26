@@ -1,5 +1,6 @@
 package com.example.mymoregistration2ndedition;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,7 +60,10 @@ public class ChooseAccountActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(ChooseAccountActivity.this,
+                        TermsAndConditionsActivity.class);
+                i.putExtra("transactionNumber", transactionNumber);
+                startActivity(i);
             }
         });
 

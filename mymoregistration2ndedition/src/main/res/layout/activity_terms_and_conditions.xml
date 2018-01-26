@@ -7,6 +7,7 @@
     tools:context="com.example.mymoregistration2ndedition.TermsAndConditionsActivity">
 
     <ImageView
+        android:id="@+id/main_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
