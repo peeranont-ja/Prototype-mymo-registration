@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -33,6 +34,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     ImageView bg_query;
     Button btn_search;
     View bg_text;
+    TextView openAccountHeader;
     EditText citizen_input;
     Button cameraBtn;
     Button nextBtn;
@@ -78,6 +80,10 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.btn_back);
         nextBtn = findViewById(R.id.btn_next);
         queryBtn = findViewById(R.id.btn_query);
+        openAccountHeader = findViewById(R.id.open_account_header);
+        if (transactionNumber == 0){
+            openAccountHeader.setVisibility(View.VISIBLE);
+        }
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override

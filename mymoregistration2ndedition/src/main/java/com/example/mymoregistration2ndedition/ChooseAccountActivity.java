@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,19 +18,20 @@ public class ChooseAccountActivity extends AppCompatActivity {
     Spinner accountType;
     Spinner accountSubtype;
     ImageButton backBtn;
-    View hideAccountSubtypeBorder;
     TextView lowestDepositAmount;
-    int onItemselected = 0;
+    View hideAccountSubtypeBorder;
+    Button nextBtn;
+    int transactionNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_account);
 
-//        Bundle bundle = getIntent().getExtras();
-//        if (bundle != null) {
-//            transactionNumber = bundle.getInt("transactionNumber");
-//        }
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            transactionNumber = bundle.getInt("transactionNumber");
+        }
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -53,6 +55,14 @@ public class ChooseAccountActivity extends AppCompatActivity {
             }
         });
 
+        nextBtn = findViewById(R.id.btn_next);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         hideAccountSubtypeBorder = findViewById(R.id.hide_account_subtype_border);
         lowestDepositAmount = findViewById(R.id.lowest_deposit_amount);
 
@@ -70,9 +80,9 @@ public class ChooseAccountActivity extends AppCompatActivity {
 
         accountSubtype = findViewById(R.id.account_subtype);
         String[] accountSubtypeStringList = getResources().getStringArray(R.array.account_subtype_sav);
-        ArrayAdapter<String> adapterAccountSubtype = new ArrayAdapter<>(this,
+        final ArrayAdapter<String> adapterAccountSubtype = new ArrayAdapter<>(this,
                 R.layout.spinner_item, accountSubtypeStringList);
-        accountSubtype.setAdapter(adapterAccountSubtype);
+
 
         accountType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -81,7 +91,9 @@ public class ChooseAccountActivity extends AppCompatActivity {
                     accountSubtype.setVisibility(View.GONE);
                     hideAccountSubtypeBorder.setVisibility(View.VISIBLE);
                     lowestDepositAmount.setVisibility(View.GONE);
+                    nextBtn.setVisibility(View.GONE);
                 } else {
+                    accountSubtype.setAdapter(adapterAccountSubtype);
                     accountSubtype.setVisibility(View.VISIBLE);
                     hideAccountSubtypeBorder.setVisibility(View.GONE);
                 }
@@ -97,8 +109,10 @@ public class ChooseAccountActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     lowestDepositAmount.setVisibility(View.GONE);
-                }else{
+                    nextBtn.setVisibility(View.GONE);
+                } else {
                     lowestDepositAmount.setVisibility(View.VISIBLE);
+                    nextBtn.setVisibility(View.VISIBLE);
                 }
             }
 

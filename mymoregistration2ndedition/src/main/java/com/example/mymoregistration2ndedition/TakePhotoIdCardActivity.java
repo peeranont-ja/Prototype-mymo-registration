@@ -32,6 +32,7 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
     Button nextBtn;
     TextView registerTimestamp;
     TextView takePhotoDescription;
+    TextView openAccountHeader;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String currentDate = sdf.format(new Date());
@@ -64,6 +65,11 @@ public class TakePhotoIdCardActivity extends AppCompatActivity {
             if (actionBar != null) actionBar.hide();
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        openAccountHeader = findViewById(R.id.open_account_header);
+        if (transactionNumber == 0){
+            openAccountHeader.setVisibility(View.VISIBLE);
+        }
 
         backBtn = findViewById(R.id.btn_back);
         backBtn.setOnClickListener(new View.OnClickListener() {

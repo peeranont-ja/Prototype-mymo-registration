@@ -23,6 +23,7 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
     Button nextBtn;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     private static final int CAMERA_REQUEST = 1888;
+    TextView openAccountHeader;
 
     TextView registerTimestamp;
 
@@ -54,6 +55,11 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
             if (actionBar != null) actionBar.hide();
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        openAccountHeader = findViewById(R.id.open_account_header);
+        if (transactionNumber == 0){
+            openAccountHeader.setVisibility(View.VISIBLE);
+        }
 
         backBtn = findViewById(R.id.btn_back);
         backBtn.setOnClickListener(new View.OnClickListener() {

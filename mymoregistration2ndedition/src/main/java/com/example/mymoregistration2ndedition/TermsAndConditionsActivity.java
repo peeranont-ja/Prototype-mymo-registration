@@ -51,10 +51,16 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
     private TextView termsAndConditions;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    int transactionNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         verifyStoragePermissions(this);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            transactionNumber = bundle.getInt("transactionNumber");
+        }
 
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
 //        final float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
@@ -79,6 +85,8 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
             if (actionBar != null) actionBar.hide();
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
 
         backBtn = findViewById(R.id.btn_back);
         backBtn.setOnClickListener(new View.OnClickListener() {

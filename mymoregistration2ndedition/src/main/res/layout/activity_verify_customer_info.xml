@@ -15,6 +15,20 @@
         android:src="@drawable/background_17" />
 
 
+    <TextView
+        android:id="@+id/open_account_header"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/white"
+        android:text="เปิดบัญชี"
+        android:textColor="#707070"
+        android:textSize="12sp"
+        android:visibility="invisible" />
+
+
     <View
         android:layout_width="24dp"
         android:layout_height="24dp"
