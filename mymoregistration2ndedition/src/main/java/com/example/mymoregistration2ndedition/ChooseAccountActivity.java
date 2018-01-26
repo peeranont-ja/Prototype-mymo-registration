@@ -2,6 +2,7 @@ package com.example.mymoregistration2ndedition;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -19,7 +20,6 @@ public class ChooseAccountActivity extends AppCompatActivity {
     View hideAccountSubtypeBorder;
     TextView lowestDepositAmount;
     int onItemselected = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,40 +74,37 @@ public class ChooseAccountActivity extends AppCompatActivity {
                 R.layout.spinner_item, accountSubtypeStringList);
         accountSubtype.setAdapter(adapterAccountSubtype);
 
-//        accountType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                if (onItemselected == 0) {
-//                    accountSubtype.setVisibility(View.INVISIBLE);
-//                    hideAccountSubtypeBorder.setVisibility(View.VISIBLE);
-//                } else {
-//                    accountSubtype.setVisibility(View.VISIBLE);
-//                    hideAccountSubtypeBorder.setVisibility(View.INVISIBLE);
-//                }
-//                onItemselected++;
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                accountSubtype.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        accountSubtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                if (onItemselected == 0) {
-//                    lowestDepositAmount.setVisibility(View.INVISIBLE);
-//                } else {
-//                    lowestDepositAmount.setVisibility(View.VISIBLE);
-//                }
-//                onItemselected++;
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                lowestDepositAmount.setVisibility(View.INVISIBLE);
-//            }
-//        });
+        accountType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    accountSubtype.setVisibility(View.GONE);
+                    hideAccountSubtypeBorder.setVisibility(View.VISIBLE);
+                    lowestDepositAmount.setVisibility(View.GONE);
+                } else {
+                    accountSubtype.setVisibility(View.VISIBLE);
+                    hideAccountSubtypeBorder.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        accountSubtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    lowestDepositAmount.setVisibility(View.GONE);
+                }else{
+                    lowestDepositAmount.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 }

@@ -92,7 +92,7 @@
         android:layout_marginLeft="84dp"
         android:layout_marginTop="505dp"
         android:background="@android:color/white"
-        android:visibility="invisible"/>
+        android:visibility="visible"/>
 
     <Spinner
         android:id="@+id/account_subtype"
@@ -101,7 +101,7 @@
         android:layout_marginLeft="85dp"
         android:layout_marginTop="505dp"
         android:paddingLeft="31dp"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
     <View
         android:layout_width="341dp"
@@ -118,7 +118,7 @@
         android:layout_marginTop="580dp"
         android:text="จำนวนเงินฝากขั้นต่ำ 500 บาท"
         android:textSize="23sp"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
     <View
         android:layout_width="150dp"
