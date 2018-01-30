@@ -7,6 +7,7 @@
     tools:context="com.example.mymoregistration2ndedition.SummaryActivity">
 
     <ImageView
+        android:id="@+id/main_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
@@ -60,8 +61,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="370dp"
-        android:layout_marginLeft="130dp"
+        android:layout_marginBottom="350dp"
+        android:layout_marginLeft="140dp"
         android:orientation="vertical"
         android:visibility="visible">
 
@@ -70,26 +71,27 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:alpha="0.8"
+            android:alpha="0.6"
             android:background="@null"
             android:scaleType="centerInside"
             android:src="@drawable/logo_gsb"
-            android:tint="#FFFFFF" />
+            android:tint="#FC3F7C" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:alpha="0.8"
-            android:background="@android:color/white" />
+            android:alpha="0.6"
+            android:background="#FC3F7C" />
 
         <TextView
+            android:id="@+id/watermark_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="5dp"
-            android:alpha="0.8"
+            android:alpha="0.6"
             android:text="ใช้สำหรับการสมัคร MyMo เท่านั้น"
-            android:textColor="@android:color/white"
+            android:textColor="#FC3F7C"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -98,9 +100,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:alpha="0.8"
+            android:alpha="0.6"
             android:text="31/12/1995"
-            android:textColor="@android:color/white"
+            android:textColor="#FC3F7C"
             android:textSize="12sp"
             android:textStyle="bold" />
     </LinearLayout>

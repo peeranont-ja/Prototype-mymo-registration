@@ -1,7 +1,6 @@
 package com.example.mymoregistration2ndedition;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,43 +8,44 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class VerifyCustomerInfoActivity extends AppCompatActivity {
 
     ImageButton backBtn;
-    ImageView bg_query;
-    Button btn_search;
-    View bg_text;
+    ImageView queryBackground;
+    Button searchBtn;
+    View textBackground;
     TextView openAccountHeader;
-    EditText citizen_input;
+    EditText citizenInput;
     Button cameraBtn;
     Button nextBtn;
     Button queryBtn;
+    Spinner kycOccupation;
+    Spinner kycIncome;
+    Spinner kycIncomeSource;
+    Spinner kycIncomeSourceCountry;
+    Spinner kycEducation;
     private static final int MY_CAMERA_REQUEST_CODE = 0;
     public static final int REQUEST_CAMERA = 2;
     ImageView imageView;
     Uri uri;
     int transactionNumber;
 
-    @SuppressLint("WrongViewCast")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         permissionCheck();
@@ -72,16 +72,16 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        bg_query = findViewById(R.id.bg_query);
-        btn_search = findViewById(R.id.btn_search);
-        bg_text = findViewById(R.id.bg_text);
-        citizen_input = findViewById(R.id.citizen_input);
+        queryBackground = findViewById(R.id.bg_query);
+        searchBtn = findViewById(R.id.btn_search);
+        textBackground = findViewById(R.id.bg_text);
+        citizenInput = findViewById(R.id.citizen_input);
         imageView = findViewById(R.id.imageView1);
         backBtn = findViewById(R.id.btn_back);
         nextBtn = findViewById(R.id.btn_next);
         queryBtn = findViewById(R.id.btn_query);
         openAccountHeader = findViewById(R.id.open_account_header);
-        if (transactionNumber == 0){
+        if (transactionNumber == 0) {
             openAccountHeader.setVisibility(View.VISIBLE);
         }
 
@@ -101,32 +101,32 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         queryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bg_query.setVisibility(View.VISIBLE);
-                btn_search.setVisibility(View.VISIBLE);
-                bg_text.setVisibility(View.VISIBLE);
-                citizen_input.setVisibility(View.VISIBLE);
-                citizen_input.requestFocus();
+                queryBackground.setVisibility(View.VISIBLE);
+                searchBtn.setVisibility(View.VISIBLE);
+                textBackground.setVisibility(View.VISIBLE);
+                citizenInput.setVisibility(View.VISIBLE);
+                citizenInput.requestFocus();
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(citizen_input, InputMethodManager.SHOW_IMPLICIT);
+                imm.showSoftInput(citizenInput, InputMethodManager.SHOW_IMPLICIT);
             }
         });
-        btn_search.setOnClickListener(new View.OnClickListener() {
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bg_query.setVisibility(View.GONE);
-                btn_search.setVisibility(View.GONE);
-                bg_text.setVisibility(View.GONE);
-                citizen_input.setVisibility(View.GONE);
+                queryBackground.setVisibility(View.GONE);
+                searchBtn.setVisibility(View.GONE);
+                textBackground.setVisibility(View.GONE);
+                citizenInput.setVisibility(View.GONE);
                 hideKeyboard(v);
             }
         });
-        bg_query.setOnClickListener(new View.OnClickListener() {
+        queryBackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bg_query.setVisibility(View.GONE);
-                btn_search.setVisibility(View.GONE);
-                bg_text.setVisibility(View.GONE);
-                citizen_input.setVisibility(View.GONE);
+                queryBackground.setVisibility(View.GONE);
+                searchBtn.setVisibility(View.GONE);
+                textBackground.setVisibility(View.GONE);
+                citizenInput.setVisibility(View.GONE);
                 hideKeyboard(v);
             }
         });
@@ -134,36 +134,42 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                String timeStamp =
-//                        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-//                String imageFileName = "IMG_" + timeStamp + ".jpg";
-//                File f = new File(Environment.getExternalStorageDirectory()
-//                        , "DCIM/Camera/" + imageFileName);
-//                uri = Uri.fromFile(f);
-//                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-//                startActivityForResult(Intent.createChooser(intent
-//                        , "Take a picture with"), REQUEST_CAMERA);
                 Intent i = new Intent(VerifyCustomerInfoActivity.this, TakePhotoIdCardActivity.class);
                 i.putExtra("transactionNumber", transactionNumber);
                 startActivity(i);
             }
         });
 
-//        cameraView = findViewById(R.id.camera);
-    }
+        kycOccupation = findViewById(R.id.kyc_occupation);
+        String[] kycOccupationStringList = getResources().getStringArray(R.array.kyc_occupation);
+        ArrayAdapter<String> adapterKycOccupation = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, kycOccupationStringList);
+        kycOccupation.setAdapter(adapterKycOccupation);
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        cameraView.start();
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        cameraView.stop();
-//        super.onPause();
-//    }
+        kycIncome = findViewById(R.id.kyc_income);
+        String[] kycIncomeStringList = getResources().getStringArray(R.array.kyc_income);
+        ArrayAdapter<String> adapterKycIncome = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, kycIncomeStringList);
+        kycIncome.setAdapter(adapterKycIncome);
+
+        kycIncomeSource = findViewById(R.id.kyc_income_src);
+        String[] kycIncomeSourceStringList = getResources().getStringArray(R.array.kyc_income_src);
+        ArrayAdapter<String> adapterKycIncomeSource = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, kycIncomeSourceStringList);
+        kycIncomeSource.setAdapter(adapterKycIncomeSource);
+
+        kycIncomeSourceCountry = findViewById(R.id.kyc_income_src_country);
+        String[] kycIncomeSourceCountryStringList = getResources().getStringArray(R.array.kyc_income_src_country);
+        ArrayAdapter<String> adapterKycIncomeCountrySource = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, kycIncomeSourceCountryStringList);
+        kycIncomeSourceCountry.setAdapter(adapterKycIncomeCountrySource);
+
+        kycEducation = findViewById(R.id.kyc_education);
+        String[] kycEducationStringList = getResources().getStringArray(R.array.kyc_education);
+        ArrayAdapter<String> adapterKycEducation = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, kycEducationStringList);
+        kycEducation.setAdapter(adapterKycEducation);
+    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -16,9 +17,11 @@ import java.util.Date;
 public class SummaryActivity extends AppCompatActivity {
 
     ImageButton backBtn;
+    ImageView mainBg;
     Button finishBtn;
     TextView openAccountHeader;
     TextView registerTimestamp;
+    TextView watermarkDescription;
     int transactionNumber;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -49,9 +52,13 @@ public class SummaryActivity extends AppCompatActivity {
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        mainBg = findViewById(R.id.main_bg);
+        watermarkDescription = findViewById(R.id.watermark_description);
         openAccountHeader = findViewById(R.id.open_account_header);
         if (transactionNumber == 0){
-            openAccountHeader.setVisibility(View.VISIBLE);
+//            openAccountHeader.setVisibility(View.VISIBLE);
+            mainBg.setImageResource(R.drawable.background_85);
+            watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
         }
 
         backBtn = findViewById(R.id.btn_back);

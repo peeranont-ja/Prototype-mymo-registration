@@ -42,4 +42,76 @@
         <item>2001 - บัญชีเผื่อเรียก</item>
         <item>2002 - บัญชีเผื่อเรียกพิเศษ</item>
     </string-array>
+
+    <string-array name="kyc_education">
+        <item></item>
+        <item>ไม่ได้รับการศึกษา</item>
+        <item>ระดับก่อนประถมศึกษา</item>
+        <item>ประถมศึกษา</item>
+        <item>มัธยมศึกษาตอนต้น</item>
+        <item>มัธยมศึกษาตอนปลาย/ปวช.</item>
+        <item>ปวท./ปวส./อนุปริญญา</item>
+        <item>ปริญญาตรี</item>
+        <item>ปริญญาโท</item>
+        <item>ปริญญาเอกหรือสูงกว่า</item>
+    </string-array>
+
+    <string-array name="kyc_income">
+        <item></item>
+        <item>1 - 10,0000</item>
+        <item>10,001 - 20,000</item>
+        <item>20,001 - 30,000</item>
+        <item>30,001 - 40,000</item>
+        <item>40,001 - 50,000</item>
+        <item>50,001 ขึ้นไป</item>
+        <item>ไม่มีรายได้ประจำ</item>
+    </string-array>
+
+    <string-array name="kyc_income_src">
+        <item></item>
+        <item>เงินเดือน</item>
+        <item>เงินรายได้จากการประกอบธุรกิจ</item>
+        <item>อื่นๆ</item>
+    </string-array>
+
+    <string-array name="kyc_income_src_country">
+        <item></item>
+        <item>TH - ไทย</item>
+        <item>VN - เวียดนาม</item>
+        <item>CN - จีน</item>
+    </string-array>
+
+    <string-array name="kyc_occupation">
+        <item></item>
+        <item>00 - ไม่ได้ทำงาน / ว่างงาน</item>
+        <item>01 - ข้าราชการ</item>
+        <item>02 - พนักงานรัฐวิสาหกิจ </item>
+        <item>03 - พนักงานและลูกจ้างบริษัท</item>
+        <item>04 - พนักงานสถาบันการเงิน</item>
+        <item>05 - ผู้ประกอบธุรกิจ / เจ้าของกิจการ</item>
+        <item>06 - ประกอบอาชีพอิสระ</item>
+        <item>07 - ผู้รับจ้างทั่วไป / ผู้ใช้แรงงาน</item>
+        <item>08 - เกษตรกร</item>
+        <item>09 - ประกอบวิชาชีพเฉพาะ</item>
+    </string-array>
+
+    <string-array name="kyc_occupation_sub_00">
+        <item></item>
+        <item>01 - พ่อบ้าน / แม่บ้าน</item>
+        <item>02 - นักเรียน / นิสิต / นักศึกษา</item>
+        <item>03 - สมณเพศ / หมอสอนศาสนา</item>
+        <item>04 - ไม่ระบุอาชีพ</item>
+        <item>05 - อื่นๆ</item>
+    </string-array>
+
+    <string-array name="kyc_occupation_sub_06">
+        <item></item>
+        <item>01 - นักการเมืองและผู้ที่เกี่ยวข้องกับการเมือง (PEPs)</item>
+        <item>02 - ผู้มีอาชีพอิสระ</item>
+        <item>03 - ผู้มีรายได้จากคอมมิชชัน</item>
+        <item>04 - บริการ</item>
+        <item>05 - ประกอบธุรกิจสถานบริการ, บริการที่พักแรมประเภทอื่นๆซึ่งมิได้จัดประเภทไว้ในที่อื่น</item>
+        <item>06 - ธุรกิจนำเที่ยว, กิจกรรมของตัวแทนธุรกิจนำเที่ยว</item>
+    </string-array>
+
 </resources>
