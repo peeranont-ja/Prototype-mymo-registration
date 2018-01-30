@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/background_81" />
+        android:src="@drawable/background_82" />
 
 
     <TextView
@@ -47,16 +47,6 @@
         android:src="@drawable/ic_back_arrow" />
 
     <Button
-        android:id="@+id/btn_camera"
-        android:layout_width="110dp"
-        android:layout_height="94dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="362dp"
-        android:layout_marginRight="73dp"
-        android:background="?android:attr/selectableItemBackground" />
-
-    <Button
         android:id="@+id/btn_query"
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -65,23 +55,24 @@
         android:layout_marginTop="151dp"
         android:background="@drawable/circle_btn" />
 
-    <!--<ImageView-->
-    <!--android:id="@+id/imageView1"-->
-    <!--android:layout_width="502.15dp"-->
-    <!--android:layout_height="376.62dp"-->
-    <!--android:layout_marginLeft="82.85dp"-->
-    <!--android:layout_marginTop="525dp"-->
-    <!--android:adjustViewBounds="true"-->
-    <!--android:background="@drawable/rec_round_gray_bg_border"-->
-    <!--android:scaleType="centerInside"-->
-    <!--android:src="@drawable/ic_id_card_white_128" />-->
+    <Button
+        android:id="@+id/btn_update_kyc"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="482dp"
+        android:background="@drawable/circle_btn" />
 
     <LinearLayout
+        android:id="@+id/kyc_show_info_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="64dp"
-        android:layout_marginTop="515dp"
-        android:orientation="vertical">
+        android:layout_marginRight="130dp"
+        android:layout_marginTop="521dp"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,18 +80,21 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1.2"
                 android:gravity="center_vertical"
                 android:text="อาชีพ"
                 android:textColor="#898989"
                 android:textSize="18sp" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/kyc_occupation_layout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_weight="0"
                 android:background="@drawable/spinner_border"
+                android:visibility="invisible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -108,29 +102,22 @@
                 <Spinner
                     android:id="@+id/kyc_occupation"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dialog" />
 
             </RelativeLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="อื่นๆ"
+                android:id="@+id/kyc_occupation_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="03 - พนักงานและลูกจ้างบริษัท"
                 android:textColor="#898989"
-                android:textSize="18sp" />
-
-            <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:hint="โปรดระบุ"
-                android:maxLines="1" />
-
+                android:textSize="18sp"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout
@@ -139,18 +126,21 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1.2"
                 android:gravity="center_vertical"
                 android:text="เงินเดือน/รายได้ต่อเดือน"
                 android:textColor="#898989"
                 android:textSize="18sp" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/kyc_income_layout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_weight="0"
                 android:background="@drawable/spinner_border"
+                android:visibility="invisible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -158,12 +148,22 @@
                 <Spinner
                     android:id="@+id/kyc_income"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dialog" />
 
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/kyc_income_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="10,001 - 20,000"
+                android:textColor="#898989"
+                android:textSize="18sp"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout
@@ -172,18 +172,21 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1.2"
                 android:gravity="center_vertical"
                 android:text="แหล่งที่มาของเงินหรือรายได้"
                 android:textColor="#898989"
                 android:textSize="18sp" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/kyc_income_src_layout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_weight="0"
                 android:background="@drawable/spinner_border"
+                android:visibility="invisible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -191,11 +194,23 @@
                 <Spinner
                     android:id="@+id/kyc_income_src"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dialog" />
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/kyc_income_src_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="เงินเดือน"
+                android:textColor="#898989"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
 
         </LinearLayout>
 
@@ -205,18 +220,21 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1.2"
                 android:gravity="center_vertical"
                 android:text="แหล่งที่มาของเงินหรือรายได้จากประเทศ"
                 android:textColor="#898989"
                 android:textSize="18sp" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/kyc_income_src_country_layout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_weight="0"
                 android:background="@drawable/spinner_border"
+                android:visibility="invisible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -224,11 +242,22 @@
                 <Spinner
                     android:id="@+id/kyc_income_src_country"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dialog" />
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/kyc_income_src_country_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="CN - จีน"
+                android:textColor="#898989"
+                android:textSize="18sp"
+                android:visibility="visible" />
 
         </LinearLayout>
 
@@ -238,18 +267,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1.2"
                 android:gravity="center_vertical"
                 android:text="การศึกษาสูงสุด"
                 android:textColor="#898989"
                 android:textSize="18sp" />
 
+
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/kyc_education_layout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_weight="0"
                 android:background="@drawable/spinner_border"
+                android:visibility="invisible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -257,29 +290,24 @@
                 <Spinner
                     android:id="@+id/kyc_education"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dialog" />
-
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/kyc_education_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="ปวท./ปวส./อนุปริญญา"
+                android:textColor="#898989"
+                android:textSize="18sp"
+                android:visibility="visible" />
         </LinearLayout>
 
     </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="334dp"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp"
-        android:background="@drawable/btn_round_transparent"
-        android:text="@string/next_button"
-        android:textColor="#707070"
-        android:textSize="20dp"
-        android:visibility="invisible" />
 
 
     <ImageView
@@ -290,6 +318,16 @@
         android:scaleType="fitXY"
         android:src="@drawable/background_18"
         android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/btn_next"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#E6E6E6" />
 
 
     <Button
@@ -327,6 +365,26 @@
         android:inputType="number"
         android:maxLength="13"
         android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="334dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/btn_round_transparent"
+        android:text="@string/next_button"
+        android:textColor="#707070"
+        android:textSize="20dp" />
+
+    <View
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="@android:color/white" />
 
 
 </RelativeLayout>
