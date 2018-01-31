@@ -107,6 +107,13 @@ public class SummaryActivity extends AppCompatActivity {
 //            openAccountHeader.setVisibility(View.VISIBLE);
             mainBg.setImageResource(R.drawable.background_85);
             watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
+            finishBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(SummaryActivity.this, BindBookActivity.class);
+                    startActivity(i);
+                }
+            });
         }else{
             makerBtn.setVisibility(View.GONE);
             checkerBtn.setVisibility(View.GONE);

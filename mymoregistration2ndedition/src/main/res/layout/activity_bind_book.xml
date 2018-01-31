@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mymoregistration2ndedition.BindBookActivity">
+
+    <ImageView
+        android:id="@+id/main_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_57" />
+
+    <View
+        android:id="@+id/hide_background_button"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="545dp"
+        android:background="@android:color/white"
+        />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="210dp"
+        android:layout_height="63dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/btn_round_transparent"
+        android:text="ดำเนินการต่อ"
+        android:textColor="#707070"
+        android:textSize="24sp"
+        android:visibility="visible" />
+
+
+
+</RelativeLayout>
