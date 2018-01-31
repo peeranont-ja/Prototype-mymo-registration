@@ -31,7 +31,7 @@
         android:id="@+id/citizen_input"
         android:layout_width="478dp"
         android:layout_height="56dp"
-        android:background="@drawable/edittext_transaparent_bg_border"
+        android:background="@drawable/edit_text_transparent_bg_border"
         android:layout_marginLeft="99dp"
         android:layout_marginTop="211dp"
         android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"

@@ -19,6 +19,8 @@ public class SummaryActivity extends AppCompatActivity {
     ImageButton backBtn;
     ImageView mainBg;
     Button finishBtn;
+    Button makerBtn;
+    Button checkerBtn;
     TextView openAccountHeader;
     TextView registerTimestamp;
     TextView watermarkDescription;
@@ -93,7 +95,11 @@ public class SummaryActivity extends AppCompatActivity {
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
         Button sendSMSBtn = dialogSMS.findViewById(R.id.btn_send_sms);
         Button backToMainMenuBtn = dialogSuccess.findViewById(R.id.btn_main_menu);
+        makerBtn = findViewById(R.id.maker_check_data_btn);
+        checkerBtn = findViewById(R.id.checker_check_data_btn);
         finishBtn = findViewById(R.id.btn_finish);
+
+
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

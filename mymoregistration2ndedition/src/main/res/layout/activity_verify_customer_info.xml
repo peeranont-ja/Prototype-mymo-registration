@@ -358,7 +358,7 @@
         android:layout_marginLeft="180dp"
         android:layout_marginTop="211dp"
         android:animateLayoutChanges="true"
-        android:background="@drawable/edittext_transaparent_bg_border"
+        android:background="@drawable/edit_text_transparent_bg_border"
         android:ellipsize="start"
         android:gravity="center"
         android:hint="@string/search_id_description"
@@ -385,6 +385,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp"
         android:background="@android:color/white" />
+    
+
 
 
 </RelativeLayout>
