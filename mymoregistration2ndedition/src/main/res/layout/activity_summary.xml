@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -43,6 +42,14 @@
         android:scaleType="fitXY"
         android:src="@drawable/ic_back_arrow" />
 
+    <View
+        android:layout_width="334dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="@android:color/white" />
+
     <Button
         android:id="@+id/btn_finish"
         android:layout_width="334dp"
@@ -53,7 +60,38 @@
         android:background="@drawable/btn_round_transparent"
         android:text="เปิดใช้บริการ"
         android:textColor="#707070"
-        android:textSize="24dp" />
+        android:textSize="24dp"
+        android:visibility="invisible" />
+
+
+    <View
+        android:layout_width="25dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="140dp"
+        android:layout_marginLeft="65dp"
+        android:background="@android:color/white" />
+
+    <CheckBox
+        android:id="@+id/maker_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="187dp"
+        android:layout_marginLeft="62dp"
+        android:checked="false" />
+
+    <CheckBox
+        android:id="@+id/checker_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="155dp"
+        android:layout_marginLeft="62dp"
+        android:checked="false" />
 
     <LinearLayout
         android:id="@+id/watermark_layout"
@@ -129,5 +167,6 @@
             android:background="?android:attr/selectableItemBackground" />
 
     </LinearLayout>
+
 
 </RelativeLayout>

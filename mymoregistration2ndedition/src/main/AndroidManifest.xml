@@ -41,7 +41,8 @@
         </provider>
 
         <activity android:name=".TakePhotoIdCardActivity" />
-        <activity android:name=".ChooseAccountActivity"></activity>
+        <activity android:name=".ChooseAccountActivity" />
+        <activity android:name=".BindBookWithAccountActivity"></activity>
     </application>
 
 </manifest>

@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +26,8 @@ public class SummaryActivity extends AppCompatActivity {
     TextView openAccountHeader;
     TextView registerTimestamp;
     TextView watermarkDescription;
+    CheckBox makerCheckBOx;
+    CheckBox checkerCheckBox;
     int transactionNumber;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -31,7 +35,6 @@ public class SummaryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
 
@@ -41,11 +44,8 @@ public class SummaryActivity extends AppCompatActivity {
         }
 
         View decorView = getWindow().getDecorView();
-        // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.hide();
@@ -57,11 +57,12 @@ public class SummaryActivity extends AppCompatActivity {
         mainBg = findViewById(R.id.main_bg);
         watermarkDescription = findViewById(R.id.watermark_description);
         openAccountHeader = findViewById(R.id.open_account_header);
-        if (transactionNumber == 0){
-//            openAccountHeader.setVisibility(View.VISIBLE);
-            mainBg.setImageResource(R.drawable.background_85);
-            watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
-        }
+
+        makerBtn = findViewById(R.id.maker_check_data_btn);
+        checkerBtn = findViewById(R.id.checker_check_data_btn);
+        finishBtn = findViewById(R.id.btn_finish);
+        makerCheckBOx = findViewById(R.id.maker_checkBox);
+        checkerCheckBox = findViewById(R.id.checker_checkBox);
 
         backBtn = findViewById(R.id.btn_back);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +81,16 @@ public class SummaryActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_staff_confirm);
         dialog.setCanceledOnTouchOutside(false);
 
+        final Dialog dialogMaker = new Dialog(SummaryActivity.this);
+        dialogMaker.setTitle("Maker Verification");
+        dialogMaker.setContentView(R.layout.dialog_maker);
+        dialogMaker.setCanceledOnTouchOutside(false);
+
+        final Dialog dialogChecker = new Dialog(SummaryActivity.this);
+        dialogChecker.setTitle("Checker Verification");
+        dialogChecker.setContentView(R.layout.dialog_checker);
+        dialogChecker.setCanceledOnTouchOutside(false);
+
         final Dialog dialogSMS = new Dialog(SummaryActivity.this);
         dialogSMS.setTitle("SMS Dialog");
         dialogSMS.setContentView(R.layout.dialog_send_sms);
@@ -92,18 +103,91 @@ public class SummaryActivity extends AppCompatActivity {
         dialogSuccess.setCanceledOnTouchOutside(false);
         dialogSuccess.setCancelable(false);
 
+        if (transactionNumber == 0) {
+//            openAccountHeader.setVisibility(View.VISIBLE);
+            mainBg.setImageResource(R.drawable.background_85);
+            watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
+        }else{
+            makerBtn.setVisibility(View.GONE);
+            checkerBtn.setVisibility(View.GONE);
+            finishBtn.setVisibility(View.VISIBLE);
+            makerCheckBOx.setVisibility(View.GONE);
+            checkerCheckBox.setVisibility(View.GONE);
+            finishBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.show();
+                }
+            });
+        }
+
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
         Button sendSMSBtn = dialogSMS.findViewById(R.id.btn_send_sms);
         Button backToMainMenuBtn = dialogSuccess.findViewById(R.id.btn_main_menu);
+        Button makerVerifyBtn = dialogMaker.findViewById(R.id.btn_marker_verification);
+        Button checkerVerifyBtn = dialogChecker.findViewById(R.id.btn_checker_verification);
         makerBtn = findViewById(R.id.maker_check_data_btn);
         checkerBtn = findViewById(R.id.checker_check_data_btn);
         finishBtn = findViewById(R.id.btn_finish);
+        makerCheckBOx = findViewById(R.id.maker_checkBox);
+        checkerCheckBox = findViewById(R.id.checker_checkBox);
 
-
-        finishBtn.setOnClickListener(new View.OnClickListener() {
+        makerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.show();
+                if (makerCheckBOx.isChecked()) {
+                    makerCheckBOx.setChecked(false);
+                } else {
+                    dialogMaker.show();
+                }
+            }
+        });
+        checkerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkerCheckBox.isChecked()) {
+                    checkerCheckBox.setChecked(false);
+                } else {
+                    dialogChecker.show();
+                }
+            }
+        });
+        makerVerifyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogMaker.dismiss();
+                makerCheckBOx.setChecked(true);
+
+            }
+        });
+
+        checkerVerifyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogChecker.dismiss();
+                checkerCheckBox.setChecked(true);
+            }
+        });
+
+        makerCheckBOx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (checkerCheckBox.isChecked() && makerCheckBOx.isChecked()) {
+                    finishBtn.setVisibility(View.VISIBLE);
+                } else {
+                    finishBtn.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        checkerCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (checkerCheckBox.isChecked() && makerCheckBOx.isChecked()) {
+                    finishBtn.setVisibility(View.VISIBLE);
+                } else {
+                    finishBtn.setVisibility(View.GONE);
+                }
             }
         });
 
@@ -131,6 +215,7 @@ public class SummaryActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
 
     }
 }
