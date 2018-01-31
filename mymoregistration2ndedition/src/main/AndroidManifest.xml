@@ -42,7 +42,8 @@
 
         <activity android:name=".TakePhotoIdCardActivity" />
         <activity android:name=".ChooseAccountActivity" />
-        <activity android:name=".BindBookActivity"></activity>
+        <activity android:name=".BindBookActivity" />
+        <activity android:name=".DepositOpenAccountActivity"></activity>
     </application>
 
 </manifest>
