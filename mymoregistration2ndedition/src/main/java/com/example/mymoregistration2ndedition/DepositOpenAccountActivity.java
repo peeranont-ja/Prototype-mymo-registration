@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.mymoregistration2ndedition.DeviceUtils.NumberTextWatcher;
 
 public class DepositOpenAccountActivity extends AppCompatActivity {
 
@@ -68,16 +71,21 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
 
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
         Button finishBtn = dialogOpenAccountSuccess.findViewById(R.id.btn_finish);
+        final TextView depositAmount = dialogOpenAccountSuccess.findViewById(R.id.deposit_amount);
         Button backToMainMenuBtn = dialogSuccess.findViewById(R.id.btn_main_menu);
         Button backToQueryBtn = dialogSuccess.findViewById(R.id.btn_register_mymo);
         successHeader = dialogSuccess.findViewById(R.id.text_success_header);
         successContent = dialogSuccess.findViewById(R.id.text_success_content);
+
+        final EditText depositAmountInput = findViewById(R.id.deposit_amount_input);
+        depositAmountInput.addTextChangedListener(new NumberTextWatcher(depositAmountInput, "#,###"));
 
         sendPwdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
                 dialogOpenAccountSuccess.show();
+                depositAmount.setText("จำนวนเงิน " + depositAmountInput.getText() + " บาท");
             }
         });
 
