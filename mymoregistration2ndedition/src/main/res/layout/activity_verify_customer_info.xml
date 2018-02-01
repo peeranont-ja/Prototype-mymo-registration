@@ -53,7 +53,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="44dp"
         android:layout_marginTop="151dp"
-        android:background="@drawable/circle_btn" />
+        android:background="@drawable/btn_circle" />
 
     <Button
         android:id="@+id/btn_update_kyc"
@@ -62,7 +62,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="44dp"
         android:layout_marginTop="482dp"
-        android:background="@drawable/circle_btn" />
+        android:background="@drawable/btn_circle" />
 
     <LinearLayout
         android:id="@+id/kyc_show_info_layout"
