@@ -113,13 +113,13 @@
             android:background="@null"
             android:scaleType="centerInside"
             android:src="@drawable/logo_gsb"
-            android:tint="#FC3F7C" />
+            android:tint="#FFFFFF" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:alpha="0.6"
-            android:background="#FC3F7C" />
+            android:background="#FFFFFF" />
 
         <TextView
             android:id="@+id/watermark_description"
@@ -129,7 +129,7 @@
             android:layout_marginTop="5dp"
             android:alpha="0.6"
             android:text="ใช้สำหรับการสมัคร MyMo เท่านั้น"
-            android:textColor="#FC3F7C"
+            android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -140,7 +140,7 @@
             android:layout_gravity="right"
             android:alpha="0.6"
             android:text="31/12/1995"
-            android:textColor="#FC3F7C"
+            android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold" />
     </LinearLayout>

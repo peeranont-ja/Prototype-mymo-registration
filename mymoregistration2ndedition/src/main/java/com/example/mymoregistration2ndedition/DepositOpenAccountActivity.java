@@ -42,13 +42,19 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
         dialog.setCanceledOnTouchOutside(false);
 
         final Dialog dialogOpenAccountSuccess = new Dialog(DepositOpenAccountActivity.this);
-        dialogOpenAccountSuccess.setTitle("Success Dialog");
+        dialogOpenAccountSuccess.setTitle("Open Account Success Dialog");
         dialogOpenAccountSuccess.setContentView(R.layout.dialog_open_account_success);
         dialogOpenAccountSuccess.setCanceledOnTouchOutside(false);
         dialogOpenAccountSuccess.setCancelable(false);
 
+        final Dialog dialogOpenAccountSendSMS = new Dialog(DepositOpenAccountActivity.this);
+        dialogOpenAccountSendSMS.setTitle("Send SMS Dialog");
+        dialogOpenAccountSendSMS.setContentView(R.layout.dialog_open_account_send_sms);
+        dialogOpenAccountSendSMS.setCanceledOnTouchOutside(false);
+        dialogOpenAccountSendSMS.setCancelable(false);
+
         final Dialog dialogSuccess = new Dialog(DepositOpenAccountActivity.this);
-        dialogSuccess.setTitle("Success Dialog");
+        dialogSuccess.setTitle("Complete Dialog");
         dialogSuccess.setContentView(R.layout.dialog_success);
         dialogSuccess.setCanceledOnTouchOutside(false);
         dialogSuccess.setCancelable(false);
@@ -70,6 +76,7 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
         });
 
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
+        Button sendSMSBtn = dialogOpenAccountSendSMS.findViewById(R.id.btn_send_sms);
         Button finishBtn = dialogOpenAccountSuccess.findViewById(R.id.btn_finish);
         final TextView depositAmount = dialogOpenAccountSuccess.findViewById(R.id.deposit_amount);
         Button backToMainMenuBtn = dialogSuccess.findViewById(R.id.btn_main_menu);
@@ -93,6 +100,15 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialogOpenAccountSuccess.dismiss();
+                dialogOpenAccountSendSMS.show();
+
+            }
+        });
+
+        sendSMSBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogOpenAccountSendSMS.dismiss();
                 successHeader.setText("เปิดบัญชีเรียบร้อยแล้ว");
                 successContent.setText("โปรดตรวจสอบว่าเลขที่บัญชี\n" +
                         "ถูกส่งไปถึงผู้เปิดใช้บริการแล้ว");

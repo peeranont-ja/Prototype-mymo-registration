@@ -9,18 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
-        android:layout_marginTop="32dp"
-        android:text="เปิดบัญชีเรียบร้อยแล้ว"
+        android:text="เลขที่บัญชี : 0202xxxx0708 ถูกส่งไปที่"
         android:textAlignment="center"
         android:textColor="#2B2B2B"
+        android:layout_marginTop="32dp"
         android:textSize="24sp" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_tick" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,8 +22,8 @@
         android:layout_gravity="center"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:layout_marginTop="39dp"
-        android:text="ฝากเงินเข้าบัญชี"
+        android:layout_marginTop="35dp"
+        android:text="หมายเลขโทรศัพท์ :"
         android:textAlignment="center"
         android:textColor="#676767"
         android:textSize="23sp" />
@@ -41,10 +35,12 @@
         android:layout_gravity="center"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:text="0202xxxx0708"
+        android:paddingTop="10dp"
+        android:text="+66899221234"
         android:textAlignment="center"
         android:textColor="#676767"
-        android:textSize="23sp" />
+        android:textSize="23sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/deposit_amount"
@@ -54,14 +50,27 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:paddingTop="10dp"
-        android:text="จำนวนเงิน 500.00 บาท"
+        android:text="อีเมล :"
         android:textAlignment="center"
         android:textColor="#676767"
-        android:textSize="24sp"
+        android:textSize="23sp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:paddingTop="10dp"
+        android:text="chujai1234@gmail.com"
+        android:textAlignment="center"
+        android:textColor="#676767"
+        android:textSize="23sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btn_finish"
+        android:id="@+id/btn_send_sms"
         android:layout_width="334dp"
         android:layout_height="56dp"
         android:layout_gravity="center"
