@@ -52,7 +52,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="224dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/rec_round_black_bg_border"
+        android:background="@drawable/btn_rec_round_black_bg_border"
         android:scaleType="fitCenter"
         android:src="@drawable/black_bg" />
 

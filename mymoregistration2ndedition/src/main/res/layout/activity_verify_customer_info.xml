@@ -114,7 +114,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="03 - พนักงานและลูกจ้างบริษัท"
+                android:text="08 - เกษตรกร"
                 android:textColor="#898989"
                 android:textSize="18sp"
                 android:visibility="visible" />
@@ -160,7 +160,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="10,001 - 20,000"
+                android:text="50,001 ขึ้นไป"
                 android:textColor="#898989"
                 android:textSize="18sp"
                 android:visibility="visible" />
@@ -180,36 +180,69 @@
                 android:textColor="#898989"
                 android:textSize="18sp" />
 
-            <RelativeLayout
-                android:id="@+id/kyc_income_src_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:background="@drawable/spinner_border"
-                android:visibility="invisible"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <Spinner
-                    android:id="@+id/kyc_income_src"
-                    style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dialog" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/kyc_income_src_text"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="เงินเดือน"
-                android:textColor="#898989"
-                android:textSize="18sp"
-                android:visibility="visible" />
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/kyc_income_src_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:background="@drawable/spinner_border"
+                    android:visibility="invisible"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Spinner
+                        android:id="@+id/kyc_income_src"
+                        style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/kyc_income_src_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="เงินเดือน"
+                    android:textColor="#898989"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/kyc_income_src_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:hint="(โปรดระบุ)"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="#898989"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/kyc_income_src_edit_text_result"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:textColor="#898989"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -254,7 +287,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="CN - จีน"
+                android:text="TH - ไทย"
                 android:textColor="#898989"
                 android:textSize="18sp"
                 android:visibility="visible" />
@@ -301,7 +334,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="ปวท./ปวส./อนุปริญญา"
+                android:text="ปริญญาโท"
                 android:textColor="#898989"
                 android:textSize="18sp"
                 android:visibility="visible" />
@@ -385,8 +418,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp"
         android:background="@android:color/white" />
-    
-
 
 
 </RelativeLayout>

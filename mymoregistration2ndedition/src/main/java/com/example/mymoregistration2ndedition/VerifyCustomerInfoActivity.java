@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,7 +54,8 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
     TextView kycIncomeSrcText;
     TextView kycIncomeSrcCountryText;
     TextView kycEducationText;
-
+    TextView kycIncomeSrcEditTextResult;
+    EditText kycIncomeSrcEditText;
 
     Uri uri;
     int transactionNumber;
@@ -103,6 +106,8 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         kycIncomeSrcText = findViewById(R.id.kyc_income_src_text);
         kycIncomeSrcCountryText = findViewById(R.id.kyc_income_src_country_text);
         kycEducationText = findViewById(R.id.kyc_education_text);
+        kycIncomeSrcEditText = findViewById(R.id.kyc_income_src_edit_text);
+        kycIncomeSrcEditTextResult = findViewById(R.id.kyc_income_src_edit_text_result);
 
 
         if (transactionNumber == 0) {
@@ -161,6 +166,7 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
                     kycIncomeSrcText.setText(kycIncomeSource.getSelectedItem().toString());
                     kycOccupationText.setText(kycOccupation.getSelectedItem().toString());
                     kycIncomeSrcCountryText.setText(kycIncomeSourceCountry.getSelectedItem().toString());
+                    kycIncomeSrcEditText.setVisibility(View.GONE);
 
                     updateMode = false;
                 }
@@ -251,6 +257,23 @@ public class VerifyCustomerInfoActivity extends AppCompatActivity {
         kycEducation.setAdapter(adapterKycEducation);
         kycEducation.setSelection(adapterKycEducation.getPosition(
                 kycEducationText.getText().toString()));
+
+
+        kycIncomeSource.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (kycIncomeSource.getAdapter().getCount() - 1 == position) {
+                    kycIncomeSrcEditText.setVisibility(View.VISIBLE);
+                } else {
+                    kycIncomeSrcEditText.setVisibility(View.GONE);
+                    kycIncomeSrcEditText.setText("");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
