@@ -114,7 +114,7 @@ public class SummaryActivity extends AppCompatActivity {
                     startActivity(i);
                 }
             });
-        }else{
+        } else {
             makerBtn.setVisibility(View.GONE);
             checkerBtn.setVisibility(View.GONE);
             finishBtn.setVisibility(View.VISIBLE);
@@ -133,6 +133,7 @@ public class SummaryActivity extends AppCompatActivity {
         Button backToMainMenuBtn = dialogSuccess.findViewById(R.id.btn_main_menu);
         Button makerVerifyBtn = dialogMaker.findViewById(R.id.btn_marker_verification);
         Button checkerVerifyBtn = dialogChecker.findViewById(R.id.btn_checker_verification);
+        Button backToQueryBtn = dialogSuccess.findViewById(R.id.btn_register_mymo);
         makerBtn = findViewById(R.id.maker_check_data_btn);
         checkerBtn = findViewById(R.id.checker_check_data_btn);
         finishBtn = findViewById(R.id.btn_finish);
@@ -223,6 +224,14 @@ public class SummaryActivity extends AppCompatActivity {
             }
         });
 
+        backToQueryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SummaryActivity.this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
     }
 }

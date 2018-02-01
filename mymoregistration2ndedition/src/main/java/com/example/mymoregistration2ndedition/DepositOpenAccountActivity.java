@@ -69,6 +69,7 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
         Button finishBtn = dialogOpenAccountSuccess.findViewById(R.id.btn_finish);
         Button backToMainMenuBtn = dialogSuccess.findViewById(R.id.btn_main_menu);
+        Button backToQueryBtn = dialogSuccess.findViewById(R.id.btn_register_mymo);
         successHeader = dialogSuccess.findViewById(R.id.text_success_header);
         successContent = dialogSuccess.findViewById(R.id.text_success_content);
 
@@ -95,6 +96,15 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(DepositOpenAccountActivity.this, MenuActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+
+        backToQueryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DepositOpenAccountActivity.this, MainActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }

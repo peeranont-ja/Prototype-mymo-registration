@@ -41,7 +41,8 @@ public class BindBookActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(BindBookActivity.this, DepositOpenAccountActivity.class);
+//                Intent i = new Intent(BindBookActivity.this, DepositOpenAccountActivity.class);
+                Intent i = new Intent(BindBookActivity.this, ScanBarcodeActivity.class);
                 startActivity(i);
             }
         });
