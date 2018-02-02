@@ -54,13 +54,39 @@
         android:id="@+id/deposit_amount_input"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:inputType="numberDecimal"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="390dp"
         android:background="@null"
         android:gravity="right"
-        android:textSize="24sp"
+        android:inputType="numberDecimal"
         android:maxLength="10"
-        />
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="429dp"
+        android:background="@android:color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="429dp"
+        android:text="*จำนวนเงินฝากขั้นต่ำ  500 บาท"
+        android:textColor="#95989A"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="480dp"
+        android:text="เข้าบัญชี : 0202xxxx0708"
+        android:textColor="@android:color/black"
+        android:textSize="23sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

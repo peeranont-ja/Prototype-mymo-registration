@@ -57,13 +57,9 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        verifyStoragePermissions(this);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            transactionNumber = bundle.getInt("transactionNumber");
-        }
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_terms_and_conditions);
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
 //        final float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
 //        final float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
@@ -71,8 +67,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
         final int windowsWidth = displayMetrics.widthPixels;
 
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terms_and_conditions);
+
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -88,6 +83,27 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        mSignaturePad = findViewById(R.id.signature_pad);
+        signAgreement = findViewById(R.id.signature_pad_description);
+        eraser = findViewById(R.id.eraser_layout);
+        eraserIcon = findViewById(R.id.eraser_icon);
+        eraserText = findViewById(R.id.eraser_text);
+        signDescription = findViewById(R.id.sign_description);
+        mSaveButton = findViewById(R.id.btn_accept);
+        mSaveButtonBg = findViewById(R.id.btn_accept_bg);
+
+
+        verifyStoragePermissions(this);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            transactionNumber = bundle.getInt("transactionNumber");
+            signAgreement.setText("การกดปุ่มด้านล่างถือเป็นการยินยอมเงื่อนไขและข้อตกลง\nในการเปิดบัญชี");
+            signDescription.setText("กรุณาเซ็นชื่อในช่องนี้เพื่อยอมรับเงื่อนไขและข้อตกลงในการเปิดบัญชี");
+        }
+
+
+
         mainBg = findViewById(R.id.main_bg);
         if (transactionNumber == 0) {
             mainBg.setImageResource(R.drawable.background_91);
@@ -100,17 +116,10 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
             }
         });
 
-
-        mSignaturePad = findViewById(R.id.signature_pad);
-        signAgreement = findViewById(R.id.signature_pad_description);
-        eraser = findViewById(R.id.eraser_layout);
-        eraserIcon = findViewById(R.id.eraser_icon);
-        eraserText = findViewById(R.id.eraser_text);
-        signDescription = findViewById(R.id.sign_description);
-        mSaveButton = findViewById(R.id.btn_accept);
-        mSaveButtonBg = findViewById(R.id.btn_accept_bg);
         termsAndConditions = findViewById(R.id.terms_and_conditions_description);
         termsAndConditions.setText(Html.fromHtml(getString(R.string.terms_and_conditions)));
+
+
 
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
