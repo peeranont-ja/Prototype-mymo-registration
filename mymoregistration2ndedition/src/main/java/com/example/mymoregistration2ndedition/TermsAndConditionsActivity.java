@@ -7,26 +7,21 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -228,7 +223,8 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
     public boolean addPngSignatureToGallery(Bitmap signature) {
         boolean result = false;
         try {
-            File photo = new File(getAlbumStorageDir("SignaturePad"), String.format("Signature_%d.png", System.currentTimeMillis()));
+            File photo = new File(getAlbumStorageDir("SignaturePad"), String.format("Signature.png"));
+            Log.e("Gnoo", getAlbumStorageDir("SignaturePad") + String.format("Signature.png"));
             saveBitmapToPNG(signature, photo);
             scanMediaFile(photo);
             result = true;

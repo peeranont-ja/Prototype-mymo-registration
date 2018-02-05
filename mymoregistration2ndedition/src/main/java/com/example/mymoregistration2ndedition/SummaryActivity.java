@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -44,6 +47,9 @@ public class SummaryActivity extends AppCompatActivity {
 
         ImageView person_mymo = (ImageView) findViewById(R.id.person_mymo);
         person_mymo.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-PERSON.jpg"));
+
+        ImageView signature = (ImageView) findViewById(R.id.signature);
+        signature.setImageURI(Uri.parse("file:///storage/emulated/0/Pictures/SignaturePad/Signature.png"));
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -115,6 +121,7 @@ public class SummaryActivity extends AppCompatActivity {
 
             cardID_mymo.setVisibility(View.GONE);
             person_mymo.setVisibility(View.GONE);
+
 
 
             ImageView cardID_account = (ImageView) findViewById(R.id.id_card_account);
@@ -275,5 +282,14 @@ public class SummaryActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public File getAlbumStorageDir(String albumName) {
+        // Get the directory for the user's public pictures directory.
+        File file = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), albumName);
+        if (!file.mkdirs()) {
+            Log.e("SignaturePad", "Directory not created");
+        }
+        return file;
     }
 }
