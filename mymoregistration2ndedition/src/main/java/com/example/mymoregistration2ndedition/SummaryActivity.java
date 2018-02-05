@@ -2,6 +2,7 @@ package com.example.mymoregistration2ndedition;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +38,12 @@ public class SummaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
+
+        ImageView cardID_mymo = (ImageView) findViewById(R.id.id_card_mymo);
+        cardID_mymo.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-CARD.jpg"));
+
+        ImageView person_mymo = (ImageView) findViewById(R.id.person_mymo);
+        person_mymo.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-PERSON.jpg"));
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -105,6 +112,18 @@ public class SummaryActivity extends AppCompatActivity {
 
         if (transactionNumber == 0) {
 //            openAccountHeader.setVisibility(View.VISIBLE);
+
+            cardID_mymo.setVisibility(View.GONE);
+            person_mymo.setVisibility(View.GONE);
+
+
+            ImageView cardID_account = (ImageView) findViewById(R.id.id_card_account);
+            cardID_account.setVisibility(View.VISIBLE);
+            cardID_account.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-CARD.jpg"));
+
+            ImageView person_account = (ImageView) findViewById(R.id.person_account);
+            person_account.setVisibility(View.VISIBLE);
+            person_account.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-PERSON.jpg"));
             mainBg.setImageResource(R.drawable.background_85);
             watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
             finishBtn.setOnClickListener(new View.OnClickListener() {

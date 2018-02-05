@@ -93,6 +93,50 @@
         android:layout_marginLeft="62dp"
         android:checked="false" />
 
+    <ImageView
+        android:id="@+id/id_card_mymo"
+        android:layout_width="297dp"
+        android:layout_height="197dp"
+        android:layout_marginTop="507dp"
+        android:layout_marginLeft="79dp"
+        android:background="@drawable/black_bg"
+        android:scaleType="fitXY"
+        />
+
+    <ImageView
+        android:id="@+id/person_mymo"
+        android:layout_width="297dp"
+        android:layout_height="197dp"
+        android:layout_marginTop="507dp"
+        android:layout_toEndOf="@+id/id_card_mymo"
+        android:layout_marginLeft="19dp"
+        android:background="@drawable/black_bg"
+        android:scaleType="fitXY"
+        />
+
+    <ImageView
+        android:id="@+id/id_card_account"
+        android:layout_width="297dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="545dp"
+        android:layout_marginLeft="72dp"
+        android:background="@drawable/black_bg"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/person_account"
+        android:layout_width="314dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="545dp"
+        android:layout_toEndOf="@+id/id_card_account"
+        android:layout_marginLeft="38dp"
+        android:background="@drawable/black_bg"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        />
+
     <LinearLayout
         android:id="@+id/watermark_layout"
         android:layout_width="wrap_content"
