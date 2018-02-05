@@ -199,7 +199,7 @@ public class TakePhotoPersonActivity extends AppCompatActivity implements EZCamC
 
 
 
-            imageView.setImageBitmap(cropImg);
+            imageView.setImageBitmap(scaledBitmap);
             saveImage(scaledBitmap,"PERSON");
 
 
