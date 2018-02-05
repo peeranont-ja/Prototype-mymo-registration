@@ -100,7 +100,7 @@
         android:layout_marginTop="507dp"
         android:layout_marginLeft="79dp"
         android:background="@drawable/black_bg"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         />
 
     <ImageView
@@ -111,7 +111,7 @@
         android:layout_toEndOf="@+id/id_card_mymo"
         android:layout_marginLeft="19dp"
         android:background="@drawable/black_bg"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         />
 
     <ImageView

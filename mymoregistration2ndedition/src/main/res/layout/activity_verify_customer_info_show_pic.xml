@@ -28,11 +28,11 @@
     <ImageView
         android:id="@+id/id_card"
         android:layout_width="495dp"
-        android:layout_height="305dp"
-        android:layout_marginTop="540dp"
+        android:layout_height="309dp"
+        android:layout_marginTop="538dp"
         android:layout_toStartOf="@+id/btn_camera"
         android:background="@drawable/black_bg"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         />
 
     <LinearLayout

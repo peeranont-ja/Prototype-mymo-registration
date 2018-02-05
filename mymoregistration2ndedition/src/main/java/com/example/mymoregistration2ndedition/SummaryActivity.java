@@ -134,15 +134,38 @@ public class SummaryActivity extends AppCompatActivity {
                 }
             });
         } else {
-            makerBtn.setVisibility(View.GONE);
-            checkerBtn.setVisibility(View.GONE);
-            finishBtn.setVisibility(View.VISIBLE);
-            makerCheckBOx.setVisibility(View.GONE);
-            checkerCheckBox.setVisibility(View.GONE);
+//            makerBtn.setVisibility(View.GONE);
+//            checkerBtn.setVisibility(View.GONE);
+//            finishBtn.setVisibility(View.VISIBLE);
+//            makerCheckBOx.setVisibility(View.GONE);
+//            checkerCheckBox.setVisibility(View.GONE);
+//            finishBtn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    dialog.show();
+//                }
+//            });
+            openAccountHeader.setVisibility(View.VISIBLE);
+            openAccountHeader.setText("สมัคร MyMo");
+
+            cardID_mymo.setVisibility(View.GONE);
+            person_mymo.setVisibility(View.GONE);
+
+
+            ImageView cardID_account = findViewById(R.id.id_card_account);
+            cardID_account.setVisibility(View.VISIBLE);
+            cardID_account.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-CARD.jpg"));
+
+            ImageView person_account = findViewById(R.id.person_account);
+            person_account.setVisibility(View.VISIBLE);
+            person_account.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-PERSON.jpg"));
+            mainBg.setImageResource(R.drawable.background_85);
+            watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
             finishBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialog.show();
+                    Intent i = new Intent(SummaryActivity.this, BindBookActivity.class);
+                    startActivity(i);
                 }
             });
         }
