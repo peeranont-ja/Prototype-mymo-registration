@@ -3,6 +3,7 @@ package com.example.mymoregistration2ndedition;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import java.util.Date;
 public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
 
     ImageButton backBtn;
+    ImageView cardID;
     Button cameraBtn;
     Button nextBtn;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
@@ -36,6 +39,9 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_customer_info_show_pic);
+
+        ImageView cardID = (ImageView) findViewById(R.id.id_card);
+        cardID.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-CARD.jpg"));
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {

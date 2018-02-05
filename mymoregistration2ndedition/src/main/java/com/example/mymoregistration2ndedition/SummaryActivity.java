@@ -2,6 +2,7 @@ package com.example.mymoregistration2ndedition;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +38,12 @@ public class SummaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
+
+        ImageView cardID = (ImageView) findViewById(R.id.id_card);
+        cardID.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-CARD.jpg"));
+
+        ImageView person = (ImageView) findViewById(R.id.person);
+        person.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-PERSON.jpg"));
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {

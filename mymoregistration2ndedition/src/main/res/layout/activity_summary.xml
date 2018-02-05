@@ -93,6 +93,27 @@
         android:layout_marginLeft="62dp"
         android:checked="false" />
 
+    <ImageView
+        android:id="@+id/id_card"
+        android:layout_width="295dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="505dp"
+        android:layout_marginLeft="80dp"
+        android:background="@drawable/black_bg"
+        android:scaleType="fitXY"
+        />
+
+    <ImageView
+        android:id="@+id/person"
+        android:layout_width="295dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="505dp"
+        android:layout_toEndOf="@+id/id_card"
+        android:layout_marginLeft="19dp"
+        android:background="@drawable/black_bg"
+        android:scaleType="fitXY"
+        />
+
     <LinearLayout
         android:id="@+id/watermark_layout"
         android:layout_width="wrap_content"
