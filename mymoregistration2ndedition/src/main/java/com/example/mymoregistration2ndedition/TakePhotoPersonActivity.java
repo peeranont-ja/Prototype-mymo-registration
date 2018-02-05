@@ -193,7 +193,7 @@ public class TakePhotoPersonActivity extends AppCompatActivity implements EZCamC
             Log.e("GNOOOA", String.valueOf(height));
             int crop = (width - height) / 2;
             Bitmap cropImg = Bitmap.createBitmap(rotatedBitmap, width, height, x*2, y*2);
-            Bitmap scaledBitmap = Bitmap.createScaledBitmap(cropImg,3000,900,true);
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(cropImg,1200,900,true);
             Log.e("GNOOOP", String.valueOf(cropImg.getWidth()));
             Log.e("GNOOOP", String.valueOf(cropImg.getHeight()));
 
