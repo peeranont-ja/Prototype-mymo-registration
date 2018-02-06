@@ -26,6 +26,7 @@ android {
 }
 
 dependencies {
+    compile 'com.roger.catloadinglibrary:catloadinglibrary:1.0.1'
     compile 'com.github.gcacace:signature-pad:1.2.1'
     compile 'com.otaliastudios:cameraview:1.4.1'
     compile 'com.android.support:design:26.1.0'

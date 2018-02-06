@@ -27,6 +27,7 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     private static final int CAMERA_REQUEST = 1888;
     TextView openAccountHeader;
+    TextView watermarkDescription;
 
     TextView registerTimestamp;
 
@@ -40,7 +41,7 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_customer_info_show_pic);
 
-        ImageView cardID = (ImageView) findViewById(R.id.id_card);
+        ImageView cardID = findViewById(R.id.id_card);
         cardID.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-CARD.jpg"));
 
         Bundle bundle = getIntent().getExtras();
@@ -63,8 +64,10 @@ public class VerifyCustomerInfoShowPicActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         openAccountHeader = findViewById(R.id.open_account_header);
+        watermarkDescription = findViewById(R.id.watermark_description);
         if (transactionNumber == 0){
             openAccountHeader.setVisibility(View.VISIBLE);
+            watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
         }
 
         backBtn = findViewById(R.id.btn_back);

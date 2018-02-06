@@ -2,6 +2,7 @@ package com.example.mymoregistration2ndedition;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.mymoregistration2ndedition.DeviceUtils.NumberTextWatcher;
+import com.roger.catloadinglibrary.CatLoadingView;
 
 public class DepositOpenAccountActivity extends AppCompatActivity {
 
@@ -19,6 +21,7 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
     ImageButton backBtn;
     TextView successHeader;
     TextView successContent;
+    CatLoadingView catView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +90,32 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
         final EditText depositAmountInput = findViewById(R.id.deposit_amount_input);
         depositAmountInput.addTextChangedListener(new NumberTextWatcher(depositAmountInput, "#,###"));
 
+        catView = new CatLoadingView();
         sendPwdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                dialogOpenAccountSuccess.show();
-                depositAmount.setText("จำนวนเงิน " + depositAmountInput.getText() + " บาท");
+                catView.show(getSupportFragmentManager(), "");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        catView.dismiss();
+                        dialogOpenAccountSuccess.show();
+                        depositAmount.setText("จำนวนเงิน " + depositAmountInput.getText() + " บาท");
+                    }
+                }, 3500);
+
             }
         });
+
+//        sendPwdBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//                dialogOpenAccountSuccess.show();
+//                depositAmount.setText("จำนวนเงิน " + depositAmountInput.getText() + " บาท");
+//            }
+//        });
 
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,9 +126,11 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
             }
         });
 
+
         sendSMSBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 dialogOpenAccountSendSMS.dismiss();
                 successHeader.setText("เปิดบัญชีเรียบร้อยแล้ว");
                 successContent.setText("โปรดตรวจสอบว่าเลขที่บัญชี\n" +

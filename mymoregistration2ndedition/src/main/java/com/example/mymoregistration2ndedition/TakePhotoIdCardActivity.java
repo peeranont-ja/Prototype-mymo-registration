@@ -49,6 +49,7 @@ public class TakePhotoIdCardActivity extends AppCompatActivity implements EZCamC
     TextView registerTimestamp;
     TextView takePhotoDescription;
     TextView openAccountHeader;
+    TextView watermarkDescription;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String currentDate = sdf.format(new Date());
@@ -64,7 +65,8 @@ public class TakePhotoIdCardActivity extends AppCompatActivity implements EZCamC
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
 
-        textureView = (TextureView) findViewById(R.id.textureView);
+        textureView = findViewById(R.id.textureView);
+        watermarkDescription = findViewById(R.id.watermark_description);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -96,6 +98,7 @@ public class TakePhotoIdCardActivity extends AppCompatActivity implements EZCamC
         openAccountHeader = findViewById(R.id.open_account_header);
         if (transactionNumber == 0){
             openAccountHeader.setVisibility(View.VISIBLE);
+            watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
         }
 
         backBtn = findViewById(R.id.btn_back);

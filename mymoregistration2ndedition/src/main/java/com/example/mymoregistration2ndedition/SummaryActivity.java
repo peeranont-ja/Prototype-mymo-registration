@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.roger.catloadinglibrary.CatLoadingView;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -32,6 +35,7 @@ public class SummaryActivity extends AppCompatActivity {
     TextView watermarkDescription;
     CheckBox makerCheckBOx;
     CheckBox checkerCheckBox;
+    CatLoadingView catView;
     int transactionNumber;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -166,13 +170,21 @@ public class SummaryActivity extends AppCompatActivity {
             ImageView person_account = findViewById(R.id.person_account);
             person_account.setVisibility(View.VISIBLE);
             person_account.setImageURI(Uri.parse("file:///storage/emulated/0/DCIM/SUMO/Image-PERSON.jpg"));
-            mainBg.setImageResource(R.drawable.background_85);
-            watermarkDescription.setText("ใช้สำหรับการเปิดบัญชีเท่านั้น");
+            mainBg.setImageResource(R.drawable.background_85_mymo);
+
+            catView = new CatLoadingView();
             finishBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(SummaryActivity.this, BindBookActivity.class);
-                    startActivity(i);
+                    catView.show(getSupportFragmentManager(), "");
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            catView.dismiss();
+                            dialog.show();
+                        }
+                    }, 3000);
+
                 }
             });
         }
