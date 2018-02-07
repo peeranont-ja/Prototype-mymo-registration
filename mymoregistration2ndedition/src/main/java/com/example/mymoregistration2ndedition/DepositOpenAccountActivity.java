@@ -2,9 +2,11 @@ package com.example.mymoregistration2ndedition;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -21,6 +23,7 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
     ImageButton backBtn;
     TextView successHeader;
     TextView successContent;
+    TextView amountConditionsDescription;
     CatLoadingView catView;
 
     @Override
@@ -71,12 +74,8 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
         });
 
         nextBtn = findViewById(R.id.btn_next);
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-            }
-        });
+        amountConditionsDescription = findViewById(R.id.amount_conditions_description);
+
 
         Button sendPwdBtn = dialog.findViewById(R.id.btn_send_password);
         Button sendSMSBtn = dialogOpenAccountSendSMS.findViewById(R.id.btn_send_sms);
@@ -91,6 +90,22 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
         depositAmountInput.addTextChangedListener(new NumberTextWatcher(depositAmountInput, "#,###"));
 
         catView = new CatLoadingView();
+
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String input = depositAmountInput.getText().toString().replaceAll(",","");
+                if (Float.valueOf(input) >= 500) {
+                    Log.d("kuy", depositAmountInput.getText().toString());
+                    dialog.show();
+                } else {
+                    amountConditionsDescription.setText("กรุณาฝากเงินขั้นต่ำ  500 บาท");
+                    amountConditionsDescription.setTextColor(Color.parseColor("#FF0000"));
+                }
+            }
+
+        });
+
         sendPwdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +119,6 @@ public class DepositOpenAccountActivity extends AppCompatActivity {
                         depositAmount.setText("จำนวนเงิน " + depositAmountInput.getText() + " บาท");
                     }
                 }, 3500);
-
             }
         });
 
