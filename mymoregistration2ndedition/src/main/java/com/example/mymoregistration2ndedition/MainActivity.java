@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.roger.catloadinglibrary.CatLoadingView;
 
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     Button searchBtn;
     CatLoadingView catView;
+    CheckReaderStatusTask checkCardReaderStatus;
+    startReaderService startReaderService;
 
     private Handler handler = new Handler();
 
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         TDA = new TDA(this);
 
         catView = new CatLoadingView();
+        catView.setCancelable(false);
         backBtn = findViewById(R.id.btn_back);
         searchBtn = findViewById(R.id.btn_search);
         citizenIdInput = findViewById(R.id.citizen_input);
@@ -75,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        startReaderService = new startReaderService();
+        startReaderService.execute();
     }
 
     @Override
@@ -86,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        CheckReaderStatusTask checkCardReaderStatus = new CheckReaderStatusTask();
+        checkCardReaderStatus = new CheckReaderStatusTask();
         checkCardReaderStatus.execute();
     }
 
@@ -118,22 +124,22 @@ public class MainActivity extends AppCompatActivity {
         return netInfo != null && netInfo.isConnectedOrConnecting();    //Check Network and Return
     }
 
-//    private void searchBluetooth() {
-//        String result = TDA.readerTA("2");                              //Auto scan Bluetooth reader
-//        if (result.compareTo("02") == 0) {                              //Check Result //02 = Card Present
+    private void searchBluetooth() {
+        String result = TDA.readerTA("2");                              //Auto scan Bluetooth reader
+        if (result.compareTo("02") == 0) {                              //Check Result //02 = Card Present
 //            Toast.makeText(this, "Search Blutooth", Toast.LENGTH_SHORT).show();     //Show balloon
-//        }
-//
-//    }
+        }
+
+    }
 
     private class CheckReaderStatusTask extends AsyncTask<Void, Void, Void> {
         protected Void doInBackground(Void... params) {
-            startProcess(); //Method Init App
-            catView.show(getSupportFragmentManager(), "");
-            catView.setCancelable(false);
-            catView.setCanceledOnTouchOutside(false);
-//          searchBluetooth();
-            while (TDA.infoTA("3").compareTo("20") != 0);
+            while (TDA.infoTA("3").compareTo("20") != 0) ;
+            {
+                if (!catView.isAdded()) {
+                    catView.show(getSupportFragmentManager(), "");
+                }
+            }
             return null;
         }
 
@@ -165,10 +171,15 @@ public class MainActivity extends AppCompatActivity {
                     handler.post(new Runnable() {
                         public void run() {
                             catView.dismiss();
-                            citizenIdInput.setText(Data);                   //Set Data Text on Screen
-                            Intent i = new Intent(MainActivity.this, MenuActivity.class);
-                            i.putExtra("cardData", Data);
-                            startActivity(i);
+                            citizenIdInput.setText(Data); //Set Data Text on Screen
+                            if (Data.length() > 3) {
+                                Intent i = new Intent(MainActivity.this, MenuActivity.class);
+                                i.putExtra("cardData", Data);
+                                startActivity(i);
+                            } else {
+                                checkCardReaderStatus = new CheckReaderStatusTask();
+                                checkCardReaderStatus.execute();
+                            }
                         }
                     });
 
@@ -183,6 +194,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             thread.start();
+        }
+    }
+
+    private class startReaderService extends AsyncTask<Void, Void, Void> {
+        protected Void doInBackground(Void... params) {
+            startProcess(); //Method Init App
+//            searchBluetooth();
+            return null;
         }
     }
 }
