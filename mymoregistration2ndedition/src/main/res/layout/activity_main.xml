@@ -16,58 +16,63 @@
     <View
         android:layout_width="768dp"
         android:layout_height="330dp"
-        android:background="#FAFAFA"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:background="#FAFAFA" />
 
     <View
         android:layout_width="478dp"
         android:layout_height="56dp"
-        android:background="@drawable/border"
         android:layout_marginLeft="99dp"
         android:layout_marginTop="211dp"
-        />
+        android:background="@drawable/border" />
 
     <EditText
         android:id="@+id/citizen_input"
         android:layout_width="478dp"
         android:layout_height="56dp"
-        android:background="@drawable/edit_text_transparent_bg_border"
         android:layout_marginLeft="99dp"
         android:layout_marginTop="211dp"
-        android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"
+        android:background="@drawable/edit_text_transparent_bg_border"
         android:ellipsize="start"
         android:gravity="center"
+        android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"
         android:inputType="number"
         android:maxLength="13"
-        android:textColor="#707070"
-        />
+        android:textColor="#707070" />
 
     <Button
         android:id="@+id/btn_search"
         android:layout_width="93dp"
         android:layout_height="56dp"
+        android:layout_alignParentRight="true"
         android:layout_marginRight="98dp"
         android:layout_marginTop="211dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_alignParentRight="true"/>
+        android:background="?android:attr/selectableItemBackground" />
 
     <View
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="63dp"
-        android:background="@android:color/white"
-        />
+        android:background="@android:color/white" />
 
     <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_back_arrow"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="63dp"
-        android:scaleType="fitXY"
         android:background="@android:color/transparent"
-        />
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_back_arrow" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_search"
+        android:background="@android:color/black"
+        android:layout_margin="20dp" />
 
 </RelativeLayout>

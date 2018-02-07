@@ -3,15 +3,19 @@ package com.example.mymoregistration2ndedition;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
 
     Button registerBtn;
     Button openBookBtn;
     int transactionNumber;
+    String[] cardInfoArray;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,15 @@ public class MenuActivity extends AppCompatActivity {
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String cardData = bundle.getString("cardData");
+            cardInfoArray = cardData.split("\\s*#\\s*");
+            Log.d("kuy", String.valueOf(cardInfoArray));
+            Toast.makeText(this, cardInfoArray[0], Toast.LENGTH_SHORT).show();     //Show balloon
+
+        }
+
         openBookBtn = findViewById(R.id.btn_open_account);
         openBookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +63,7 @@ public class MenuActivity extends AppCompatActivity {
                 transactionNumber = 1;
                 Intent i = new Intent(MenuActivity.this, VerifyCustomerInfoActivity.class);
                 i.putExtra("transactionNumber", transactionNumber);
+                i.putExtra("cardInfo", cardInfoArray);
                 startActivity(i);
             }
         });
