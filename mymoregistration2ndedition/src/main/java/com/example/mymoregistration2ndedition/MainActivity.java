@@ -1,5 +1,6 @@
 package com.example.mymoregistration2ndedition;
 
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,10 +19,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.roger.catloadinglibrary.CatLoadingView;
 
+import java.util.ArrayList;
+
 import rd.TDA.TDA;
+import th.co.tbsp.BTDevice;
+import th.co.tbsp.CardData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,12 +40,23 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     Button searchBtn;
     CatLoadingView catView;
-    CheckReaderStatusTask checkCardReaderStatus;
-    startReaderService startReaderService;
+    BluetoothDevice blueToothDevice;
+    BTDevice device;
+
+
+    private TextView etStatus = null;
+    Button btnGetList;
+    Button btnConnect;
+    Button btnDisconnect;
+    Button btnPowerOn;
+    Button btnPowerOff;
+    Button btnReadCard;
 
     private long startReadInfo, endReadInfo, startReadPhoto, endReadPhoto;
-    private long timeDiffReadInfo, timeDiffReadPhoto;
     private Handler handler = new Handler();
+
+    byte[] Photo;
+    Bitmap bPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         View decorView = getWindow().getDecorView();
-        // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.hide();
@@ -62,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         TDA = new TDA(this);
-
         catView = new CatLoadingView();
         catView.setCancelable(false);
         backBtn = findViewById(R.id.btn_back);
@@ -73,71 +86,19 @@ public class MainActivity extends AppCompatActivity {
         readTextTime = findViewById(R.id.readTextTime);
         cardDataText = findViewById(R.id.cardDataText);
 
+        etStatus = findViewById(R.id.status);
+        btnGetList = findViewById(R.id.getList);
+        btnConnect = findViewById(R.id.connect);
+        btnDisconnect = findViewById(R.id.disconnect);
+        btnPowerOn = findViewById(R.id.powerOn);
+        btnPowerOff = findViewById(R.id.powerOff);
+        btnReadCard = findViewById(R.id.readcard);
+
+        device = new BTDevice();
+
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(MainActivity.this, MenuActivity.class);
-//                startActivity(i);
-                readPhotoTime.setText("");
-                readTextTime.setText("");
-                cardDataText.setText("");
-                imageView.setImageBitmap(null);
-                startReadInfo = 0;
-                endReadInfo = 0;
-                startReadPhoto = 0;
-                endReadPhoto = 0;
-                Thread thread = new Thread(new Runnable() {
-                    byte[] Photo;
-                    Bitmap bPhoto;
-                    String Data;
-
-                    @Override
-                    public void run() {
-
-                        //clear Screen
-                        handler.post(new Runnable() {
-                            public void run() {
-                                citizenIdInput.setText("");                     //Clear Data Text  on Screen
-                                imageView.setImageBitmap(null);         //Clear Photo on Screen
-                            }
-                        });
-
-                        //Read Text from NID card
-                        startReadInfo = System.currentTimeMillis();
-                        Data = TDA.nidTextTA("0");                      //ReadText
-                        if (Data.compareTo("-2") == 0) {                //Check if un-registered reader
-                            TDA.serviceTA("2");                         //Update license file
-                            Data = TDA.nidTextTA("0");                  //Read Text Again
-//                            Data = TDA.nidNumberTA("0");
-                        }
-
-                        handler.post(new Runnable() {
-                            public void run() {
-                                endReadInfo = System.currentTimeMillis();
-                                citizenIdInput.setText(Data); //Set Data Text on Screen
-                                cardDataText.setText("Card Data: " + Data);
-                                readTextTime.setText("Start Time: " + startReadInfo +
-                                        "\nEnd Time: " + endReadInfo +
-                                        "\nTime Difference: " + (endReadInfo - startReadInfo));
-                            }
-                        });
-
-                        //Read Photo from NID card
-                        startReadPhoto = System.currentTimeMillis();
-                        Photo = TDA.nidPhotoTA("0");                     //Read Photo
-                        bPhoto = BitmapFactory.decodeByteArray(Photo, 0, Photo.length);     // Decode Byte Array to Bitmap
-                        handler.post(new Runnable() {
-                            public void run() {
-                                endReadPhoto = System.currentTimeMillis();
-                                imageView.setImageBitmap(bPhoto);       //set Bitmap on Screen
-                                readPhotoTime.setText("Start Time: " + startReadPhoto +
-                                        "\nEnd Time: " + endReadPhoto +
-                                        "\nTime Difference: " + (endReadPhoto - startReadPhoto));
-                            }
-                        });
-                    }
-                });
-                thread.start();
             }
         });
 
@@ -148,133 +109,157 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        startReaderService = new startReaderService();
-        startReaderService.execute();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        citizenIdInput.setText("");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        checkCardReaderStatus = new CheckReaderStatusTask();
-//        checkCardReaderStatus.execute();
-    }
-
-
-    private void startProcess() {
-        TDA.serviceTA("0");                                             //Close previous service if exist
-        while (TDA.serviceTA("9").compareTo("00") != 0) ;                //Wait until service closed
-        TDA.serviceTA("1,MyMo Registration 2nd Edition");                                   //Start TDAService with “MyMo Registration 2nd Edition”
-        while (TDA.serviceTA("9").compareTo("01") != 0)
-            ;                //Wait until service started
-
-        //Check license file
-        String check = TDA.infoTA("4");                                 //Test Command
-        Log.i("Check", "check = " + check);                             //Print Log
-
-        /************************** check recieve data is Error Code **************************/
-        // -2 = INVALID LICENSE
-        // -12 = LICENSE FILE ERROR
-        if (check.compareTo("-2") == 0 || check.compareTo("-12") == 0) {
-            if (isOnline()) {                                           //Method Check Internet
-                TDA.serviceTA("2");                                     //Update license file
+        btnGetList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setBluetoothCardReader();
             }
+        });
+        btnConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectBluetoothCardReader();
+            }
+        });
+        btnDisconnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disconnectBluetoothCardReader();
+            }
+        });
+        btnPowerOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                powerOnBluetoothCardReader();
+            }
+        });
+        btnPowerOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                powerOffBluetoothCardReader();
+            }
+        });
+        btnReadCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardDataText.setText("");
+                readPhotoTime.setText("");
+                readTextTime.setText("");
+                imageView.setImageBitmap(null);
+                getCardDataBluetoothCardReader();
+            }
+        });
+
+
+    }
+
+    private void setBluetoothCardReader() {
+        ArrayList<BluetoothDevice> arrayForBlueToothDevice;
+        try {
+            arrayForBlueToothDevice = device.getlistDevice();
+            etStatus.setText("Device Name : " + arrayForBlueToothDevice.get(0).getName());
+            Toast.makeText(this, "Device Name : " + arrayForBlueToothDevice.get(0).getName(),
+                    Toast.LENGTH_SHORT).show();
+            blueToothDevice = arrayForBlueToothDevice.get(0);
+            Log.d("kuy", String.valueOf(blueToothDevice));
+        } catch (Exception e) {
+            Log.d("ReadCard ", "Error : " + e.getMessage());
+            blueToothDevice = null;
         }
     }
 
-    public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);     //initail Object Connect Manager
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();                //get Network Info
-        return netInfo != null && netInfo.isConnectedOrConnecting();    //Check Network and Return
+    private void connectBluetoothCardReader() {
+        try {
+            if (device.connectDevice(blueToothDevice)) {
+                etStatus.setText("Connect Device Success");
+                Toast.makeText(this, "Connect Device Success", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            etStatus.setText("Connect Device Error : " + e.getMessage());
+            Toast.makeText(this, "Connect Device Error : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
-//    private void searchBluetooth() {
-//        String result = TDA.readerTA("2");                              //Auto scan Bluetooth reader
-//        if (result.compareTo("02") == 0) {                              //Check Result //02 = Card Present
-////            Toast.makeText(this, "Search Blutooth", Toast.LENGTH_SHORT).show();     //Show balloon
-//        }
-//
-//    }
+    private void disconnectBluetoothCardReader() {
+        try {
+            if (device.disconnectDevice()) {
+                etStatus.setText("Disconnect Device Success");
+            }
+        } catch (Exception e) {
+            etStatus.setText("Disconnect Device Error : " + e.getMessage());
+        }
+    }
 
-    private class CheckReaderStatusTask extends AsyncTask<Void, Void, Void> {
-        protected Void doInBackground(Void... params) {
-            while (TDA.infoTA("3").compareTo("20") != 0) ;
-            {
-                if (!catView.isAdded()) {
-                    catView.show(getSupportFragmentManager(), "");
+    private void powerOnBluetoothCardReader() {
+        try {
+            if (device.powerOn()) {
+                etStatus.setText("Power On Device Success");
+            }
+        } catch (Exception e) {
+            etStatus.setText("Power On Device Error : " + e.getMessage());
+        }
+    }
+
+    private void powerOffBluetoothCardReader() {
+        try {
+            if (device.powerOff()) {
+                etStatus.setText("Power Off Device Success");
+            }
+        } catch (Exception e) {
+            etStatus.setText("Power Off Device Error : " + e.getMessage());
+        }
+    }
+
+    private void getCardDataBluetoothCardReader() {
+        try {
+            CardData data;
+            startReadInfo = System.currentTimeMillis();
+            data = device.readTextOnly();
+//            Log.i("ReadCard ", "All Data : " + data);
+//            Log.i("ReadCard ", "Card ID : " + data.getNationalID());
+//            Log.i("ReadCard ", "Name : " + data.getName());
+//            Log.i("ReadCard ", "NameEn : " + data.getNameEn());
+//            Log.i("ReadCard ", "Birth Date : " + data.getBirthDate());
+//            Log.i("ReadCard ", "Expire Date : " + data.getExpiredDate());
+//            Log.i("ReadCard ", "Issue Date : " + data.getIssueDate());
+//            Log.i("ReadCard ", "Picture Number : " + data.getPictureNumber());
+//            Log.i("ReadCard ", "Sex : " + data.getSex());
+//            Log.i("ReadCard ", "Address : " + data.getAddress());
+//            Log.i("ReadCard ", "Picture Base 64 : " + data.getBasePicture());
+//            Log.i("ReadCard ", "Picture Base Byte : " + data.getBytePicture());
+            String allCardData = data.getNationalID() + data.getName() + data.getNameEn() +
+                    data.getBirthDate() + data.getExpiredDate() + data.getIssueDate() +
+                    data.getPictureNumber() + data.getSex() + data.getAddress();
+            endReadInfo = System.currentTimeMillis();
+            cardDataText.setText(allCardData);
+            readTextTime.setText("Start Time: " + startReadInfo +
+
+                    "\nEnd Time: " + endReadInfo +
+
+                    "\nTime Difference: " + (endReadInfo - startReadInfo));
+
+            CardData data2;
+            startReadPhoto = System.currentTimeMillis();
+            data2 = device.readAll();
+            Photo = data2.getBytePicture();
+            bPhoto = BitmapFactory.decodeByteArray(Photo, 0, Photo.length);     // Decode Byte Array to Bitmap
+            handler.post(new Runnable() {
+                public void run() {
+                    endReadPhoto = System.currentTimeMillis();
+                    imageView.setImageBitmap(bPhoto);
+                    readPhotoTime.setText("Start Time: " + startReadPhoto +
+
+                            "\nEnd Time: " + endReadPhoto +
+
+                            "\nTime Difference: " + (endReadPhoto - startReadPhoto));
+
                 }
-            }
-            return null;
+            });
+        } catch (Exception e) {
+            etStatus.setText("Read Card Error : " + e.getMessage());
         }
 
-        protected void onPostExecute(Void param) {
-//            Thread thread = new Thread(new Runnable() {
-//                byte[] Photo;
-//                Bitmap bPhoto;
-//                String Data;
-//
-//                @Override
-//                public void run() {
-//
-//                    //clear Screen
-//                    handler.post(new Runnable() {
-//                        public void run() {
-//                            citizenIdInput.setText("");                     //Clear Data Text  on Screen
-//                            imageView.setImageBitmap(null);         //Clear Photo on Screen
-//                        }
-//                    });
-//
-//                    //Read Text from NID card
-//                    startReadInfo = System.currentTimeMillis();
-//                    Data = TDA.nidTextTA("0");                      //ReadText
-//                    if (Data.compareTo("-2") == 0) {                //Check if un-registered reader
-//                        TDA.serviceTA("2");                         //Update license file
-//                        Data = TDA.nidTextTA("0");                  //Read Text Again
-////                            Data = TDA.nidNumberTA("0");
-//                    }
-//
-//                    handler.post(new Runnable() {
-//                        public void run() {
-//                            endReadInfo = System.currentTimeMillis();
-//                            catView.dismiss();
-//                            citizenIdInput.setText(Data); //Set Data Text on Screen
-//                            cardDataText.setText("Card Data: " + Data);
-//                            readTextTime.setText("Start Time: " + startReadInfo +
-//                                    "\nEnd Time: " + endReadInfo +
-//                                    "\nTime Difference: " + (endReadInfo-startReadInfo));
-//                        }
-//                    });
-//
-//                    //Read Photo from NID card
-//                    startReadPhoto = System.currentTimeMillis();
-//                    Photo = TDA.nidPhotoTA("0");                     //Read Photo
-//                    bPhoto = BitmapFactory.decodeByteArray(Photo, 0, Photo.length);     // Decode Byte Array to Bitmap
-//                    handler.post(new Runnable() {
-//                        public void run() {
-//                            endReadPhoto = System.currentTimeMillis();
-//                            imageView.setImageBitmap(bPhoto);       //set Bitmap on Screen
-//                            readPhotoTime.setText("Start Time: " + startReadPhoto +
-//                                    "\nEnd Time: " + endReadPhoto +
-//                                    "\nTime Difference: " + (endReadPhoto-startReadPhoto));
-//                        }
-//                    });
-//                }
-//            });
-//            thread.start();
-        }
     }
 
-    private class startReaderService extends AsyncTask<Void, Void, Void> {
-        protected Void doInBackground(Void... params) {
-            startProcess(); //Method Init App
-//            searchBluetooth();
-            return null;
-        }
-    }
 }
 
