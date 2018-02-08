@@ -3,6 +3,7 @@ package com.example.mymoregistration2ndedition;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -16,7 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.roger.catloadinglibrary.CatLoadingView;
 
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     TDA TDA;
     ImageButton backBtn;
+    TextView readTextTime;
+    TextView readPhotoTime;
+    TextView cardDataText;
     EditText citizenIdInput;
     ImageView imageView;
     Button searchBtn;
@@ -33,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     CheckReaderStatusTask checkCardReaderStatus;
     startReaderService startReaderService;
 
+    private long startReadInfo, endReadInfo, startReadPhoto, endReadPhoto;
+    private long timeDiffReadInfo, timeDiffReadPhoto;
     private Handler handler = new Handler();
 
     @Override
@@ -63,12 +69,75 @@ public class MainActivity extends AppCompatActivity {
         searchBtn = findViewById(R.id.btn_search);
         citizenIdInput = findViewById(R.id.citizen_input);
         imageView = findViewById(R.id.imageView);
+        readPhotoTime = findViewById(R.id.readPhotoTime);
+        readTextTime = findViewById(R.id.readTextTime);
+        cardDataText = findViewById(R.id.cardDataText);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(MainActivity.this, MenuActivity.class);
+//                startActivity(i);
+                readPhotoTime.setText("");
+                readTextTime.setText("");
+                cardDataText.setText("");
+                imageView.setImageBitmap(null);
+                startReadInfo = 0;
+                endReadInfo = 0;
+                startReadPhoto = 0;
+                endReadPhoto = 0;
+                Thread thread = new Thread(new Runnable() {
+                    byte[] Photo;
+                    Bitmap bPhoto;
+                    String Data;
+
+                    @Override
+                    public void run() {
+
+                        //clear Screen
+                        handler.post(new Runnable() {
+                            public void run() {
+                                citizenIdInput.setText("");                     //Clear Data Text  on Screen
+                                imageView.setImageBitmap(null);         //Clear Photo on Screen
+                            }
+                        });
+
+                        //Read Text from NID card
+                        startReadInfo = System.currentTimeMillis();
+                        Data = TDA.nidTextTA("0");                      //ReadText
+                        if (Data.compareTo("-2") == 0) {                //Check if un-registered reader
+                            TDA.serviceTA("2");                         //Update license file
+                            Data = TDA.nidTextTA("0");                  //Read Text Again
+//                            Data = TDA.nidNumberTA("0");
+                        }
+
+                        handler.post(new Runnable() {
+                            public void run() {
+                                endReadInfo = System.currentTimeMillis();
+                                citizenIdInput.setText(Data); //Set Data Text on Screen
+                                cardDataText.setText("Card Data: " + Data);
+                                readTextTime.setText("Start Time: " + startReadInfo +
+                                        "\nEnd Time: " + endReadInfo +
+                                        "\nTime Difference: " + (endReadInfo - startReadInfo));
+                            }
+                        });
+
+                        //Read Photo from NID card
+                        startReadPhoto = System.currentTimeMillis();
+                        Photo = TDA.nidPhotoTA("0");                     //Read Photo
+                        bPhoto = BitmapFactory.decodeByteArray(Photo, 0, Photo.length);     // Decode Byte Array to Bitmap
+                        handler.post(new Runnable() {
+                            public void run() {
+                                endReadPhoto = System.currentTimeMillis();
+                                imageView.setImageBitmap(bPhoto);       //set Bitmap on Screen
+                                readPhotoTime.setText("Start Time: " + startReadPhoto +
+                                        "\nEnd Time: " + endReadPhoto +
+                                        "\nTime Difference: " + (endReadPhoto - startReadPhoto));
+                            }
+                        });
+                    }
+                });
+                thread.start();
             }
         });
 
@@ -92,8 +161,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        checkCardReaderStatus = new CheckReaderStatusTask();
-        checkCardReaderStatus.execute();
+//        checkCardReaderStatus = new CheckReaderStatusTask();
+//        checkCardReaderStatus.execute();
     }
 
 
@@ -124,13 +193,13 @@ public class MainActivity extends AppCompatActivity {
         return netInfo != null && netInfo.isConnectedOrConnecting();    //Check Network and Return
     }
 
-    private void searchBluetooth() {
-        String result = TDA.readerTA("2");                              //Auto scan Bluetooth reader
-        if (result.compareTo("02") == 0) {                              //Check Result //02 = Card Present
-//            Toast.makeText(this, "Search Blutooth", Toast.LENGTH_SHORT).show();     //Show balloon
-        }
-
-    }
+//    private void searchBluetooth() {
+//        String result = TDA.readerTA("2");                              //Auto scan Bluetooth reader
+//        if (result.compareTo("02") == 0) {                              //Check Result //02 = Card Present
+////            Toast.makeText(this, "Search Blutooth", Toast.LENGTH_SHORT).show();     //Show balloon
+//        }
+//
+//    }
 
     private class CheckReaderStatusTask extends AsyncTask<Void, Void, Void> {
         protected Void doInBackground(Void... params) {
@@ -144,56 +213,59 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(Void param) {
-            Thread thread = new Thread(new Runnable() {
-                byte[] Photo;
-                Bitmap bPhoto;
-                String Data;
-
-                @Override
-                public void run() {
-
-                    //clear Screen
-                    handler.post(new Runnable() {
-                        public void run() {
-                            citizenIdInput.setText("");                     //Clear Data Text  on Screen
-                            imageView.setImageBitmap(null);         //Clear Photo on Screen
-                        }
-                    });
-
-                    //Read Text from NID card
-                    Data = TDA.nidTextTA("0");                      //ReadText
-                    if (Data.compareTo("-2") == 0) {                //Check if un-registered reader
-                        TDA.serviceTA("2");                         //Update license file
-                        Data = TDA.nidTextTA("0");                  //Read Text Again
-//                            Data = TDA.nidNumberTA("0");
-                    }
-
-                    handler.post(new Runnable() {
-                        public void run() {
-                            catView.dismiss();
-                            citizenIdInput.setText(Data); //Set Data Text on Screen
-                            if (Data.length() > 3) {
-                                Intent i = new Intent(MainActivity.this, MenuActivity.class);
-                                i.putExtra("cardData", Data);
-                                startActivity(i);
-                            } else {
-                                checkCardReaderStatus = new CheckReaderStatusTask();
-                                checkCardReaderStatus.execute();
-                            }
-                        }
-                    });
-
-                    //Read Photo from NID card
-//                        Photo = TDA.nidPhotoTA("0");                     //Read Photo
-//                        bPhoto = BitmapFactory.decodeByteArray(Photo, 0, Photo.length);     // Decode Byte Array to Bitmap
-//                        handler.post(new Runnable() {
-//                            public void run() {
-//                                imageView.setImageBitmap(bPhoto);       //set Bitmap on Screen
-//                            }
-//                        });
-                }
-            });
-            thread.start();
+//            Thread thread = new Thread(new Runnable() {
+//                byte[] Photo;
+//                Bitmap bPhoto;
+//                String Data;
+//
+//                @Override
+//                public void run() {
+//
+//                    //clear Screen
+//                    handler.post(new Runnable() {
+//                        public void run() {
+//                            citizenIdInput.setText("");                     //Clear Data Text  on Screen
+//                            imageView.setImageBitmap(null);         //Clear Photo on Screen
+//                        }
+//                    });
+//
+//                    //Read Text from NID card
+//                    startReadInfo = System.currentTimeMillis();
+//                    Data = TDA.nidTextTA("0");                      //ReadText
+//                    if (Data.compareTo("-2") == 0) {                //Check if un-registered reader
+//                        TDA.serviceTA("2");                         //Update license file
+//                        Data = TDA.nidTextTA("0");                  //Read Text Again
+////                            Data = TDA.nidNumberTA("0");
+//                    }
+//
+//                    handler.post(new Runnable() {
+//                        public void run() {
+//                            endReadInfo = System.currentTimeMillis();
+//                            catView.dismiss();
+//                            citizenIdInput.setText(Data); //Set Data Text on Screen
+//                            cardDataText.setText("Card Data: " + Data);
+//                            readTextTime.setText("Start Time: " + startReadInfo +
+//                                    "\nEnd Time: " + endReadInfo +
+//                                    "\nTime Difference: " + (endReadInfo-startReadInfo));
+//                        }
+//                    });
+//
+//                    //Read Photo from NID card
+//                    startReadPhoto = System.currentTimeMillis();
+//                    Photo = TDA.nidPhotoTA("0");                     //Read Photo
+//                    bPhoto = BitmapFactory.decodeByteArray(Photo, 0, Photo.length);     // Decode Byte Array to Bitmap
+//                    handler.post(new Runnable() {
+//                        public void run() {
+//                            endReadPhoto = System.currentTimeMillis();
+//                            imageView.setImageBitmap(bPhoto);       //set Bitmap on Screen
+//                            readPhotoTime.setText("Start Time: " + startReadPhoto +
+//                                    "\nEnd Time: " + endReadPhoto +
+//                                    "\nTime Difference: " + (endReadPhoto-startReadPhoto));
+//                        }
+//                    });
+//                }
+//            });
+//            thread.start();
         }
     }
 

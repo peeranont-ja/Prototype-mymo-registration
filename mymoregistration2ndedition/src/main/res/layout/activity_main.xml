@@ -66,13 +66,43 @@
         android:scaleType="fitXY"
         android:src="@drawable/ic_back_arrow" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_below="@id/btn_search"-->
+        <!--android:background="@android:color/black"-->
+        <!--android:layout_margin="20dp" />-->
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/btn_search"
-        android:background="@android:color/black"
-        android:layout_margin="20dp" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cardDataText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/readTextTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:layout_gravity="center"
+            android:layout_margin="20dp" />
+
+        <TextView
+            android:id="@+id/readPhotoTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </RelativeLayout>
