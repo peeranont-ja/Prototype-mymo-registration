@@ -33,7 +33,7 @@
         android:layout_marginLeft="99dp"
         android:layout_marginTop="211dp"
         android:background="@drawable/edit_text_transparent_bg_border"
-        android:editable="false"
+        android:focusable="false"
         android:ellipsize="start"
         android:gravity="center"
         android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"
@@ -136,6 +136,14 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/disconnect"
             android:layout_below="@+id/powerOff"
+            android:text="Read Card" />
+
+        <Button
+            android:id="@+id/clearText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/disconnect"
+            android:layout_below="@+id/readcard"
             android:text="Read Card" />
     </RelativeLayout>
 

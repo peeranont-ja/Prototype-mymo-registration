@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnPowerOn;
     Button btnPowerOff;
     Button btnReadCard;
+    Button btnClear;
 
     private long startReadInfo, endReadInfo, startReadPhoto, endReadPhoto;
     private Handler handler = new Handler();
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         btnPowerOn = findViewById(R.id.powerOn);
         btnPowerOff = findViewById(R.id.powerOff);
         btnReadCard = findViewById(R.id.readcard);
+        btnClear = findViewById(R.id.clearText);
 
         device = new BTDevice();
 
@@ -142,11 +144,16 @@ public class MainActivity extends AppCompatActivity {
         btnReadCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getCardDataBluetoothCardReader();
+            }
+        });
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 cardDataText.setText("");
                 readPhotoTime.setText("");
                 readTextTime.setText("");
                 imageView.setImageBitmap(null);
-                getCardDataBluetoothCardReader();
             }
         });
 
