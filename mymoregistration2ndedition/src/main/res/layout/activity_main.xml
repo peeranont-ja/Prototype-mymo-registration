@@ -93,19 +93,19 @@
             android:layout_below="@id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/connect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Connect" />
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/getList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Get List Device" />
+                android:text="1.) Initiate Connection (Get List Device)" />
+
+            <Button
+                android:id="@+id/connect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.) Connect to Card Reader" />
 
             <Button
                 android:id="@+id/disconnect"
@@ -117,7 +117,7 @@
                 android:id="@+id/powerOn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Power On" />
+                android:text="3.) Power On Card Reader" />
 
             <Button
                 android:id="@+id/powerOff"
@@ -129,7 +129,7 @@
                 android:id="@+id/readcard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Read Card" />
+                android:text="4.) Read Card" />
 
             <Button
                 android:id="@+id/clearText"
