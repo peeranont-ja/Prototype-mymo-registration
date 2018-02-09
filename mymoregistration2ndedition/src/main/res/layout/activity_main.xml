@@ -33,8 +33,8 @@
         android:layout_marginLeft="99dp"
         android:layout_marginTop="211dp"
         android:background="@drawable/edit_text_transparent_bg_border"
-        android:focusable="false"
         android:ellipsize="start"
+        android:focusable="false"
         android:gravity="center"
         android:hint="ค้นหาด้วยหมายเลขบัตรประตัวจำประชาชน"
         android:inputType="number"
@@ -89,62 +89,54 @@
             android:layout_height="wrap_content"
             android:text="" />
 
-        <Button
-            android:id="@+id/connect"
+        <LinearLayout
+            android:layout_below="@id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/status"
-            android:layout_below="@+id/getList"
-            android:text="Connect" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/getList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/status"
-            android:layout_below="@+id/status"
-            android:layout_marginTop="59dp"
-            android:text="Get List Device" />
+            <Button
+                android:id="@+id/connect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connect" />
 
-        <Button
-            android:id="@+id/disconnect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/connect"
-            android:layout_below="@+id/connect"
-            android:text="Disconnect" />
+            <Button
+                android:id="@+id/getList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get List Device" />
 
-        <Button
-            android:id="@+id/powerOn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/disconnect"
-            android:layout_below="@+id/disconnect"
-            android:text="Power On" />
+            <Button
+                android:id="@+id/disconnect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disconnect" />
 
-        <Button
-            android:id="@+id/powerOff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/disconnect"
-            android:layout_below="@+id/powerOn"
-            android:text="Power Off" />
+            <Button
+                android:id="@+id/powerOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Power On" />
 
-        <Button
-            android:id="@+id/readcard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/disconnect"
-            android:layout_below="@+id/powerOff"
-            android:text="Read Card" />
+            <Button
+                android:id="@+id/powerOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Power Off" />
 
-        <Button
-            android:id="@+id/clearText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/disconnect"
-            android:layout_below="@+id/readcard"
-            android:text="Read Card" />
+            <Button
+                android:id="@+id/readcard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Read Card" />
+
+            <Button
+                android:id="@+id/clearText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clear" />
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout

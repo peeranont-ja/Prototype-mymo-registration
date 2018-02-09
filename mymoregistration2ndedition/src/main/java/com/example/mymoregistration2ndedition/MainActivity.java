@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                etStatus.setText("");
                 cardDataText.setText("");
                 readPhotoTime.setText("");
                 readTextTime.setText("");
